@@ -40,46 +40,35 @@ gulp.task('sass', function() {
     .pipe(livereload());
 });
 
-gulp.task('scripts', function() {
-
-    gulp.src('./dev/modules/**/*directive.js')
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest('build/assets/js/'));
-
-    
-});
-
-
-
 // copy files
 gulp.task('copyFiles', function() {
 
   gulp.src(['./dev/index.html'])    
-    .pipe(gulp.dest('build/'))
+    .pipe(gulp.dest('build/'))  
     
-
-    
-     gulp.src(['./dev/modules/**'])    
-    .pipe(gulp.dest('build/modules'))
+     gulp.src(['./dev/modules/**/*.html'])    
+    .pipe(gulp.dest('build/modules/'))
 
     gulp.src(['./dev/templates/**'])    
-    .pipe(gulp.dest('build/templates'))
-    
+    .pipe(gulp.dest('build/templates'))    
 
     gulp.src(['./dev/assets/libs/**'])    
-    .pipe(gulp.dest('build/assets/libs/'))
-   
+    .pipe(gulp.dest('build/assets/libs/'))   
 
     gulp.src(['./dev/assets/css/**'])    
-    .pipe(gulp.dest('build/assets/css/')) 
+    .pipe(gulp.dest('build/assets/css/'))     
 
-    gulp.src(['./dev/assets/js/**'])    
-    .pipe(gulp.dest('build/assets/js/'))
-
-        gulp.src(['./dev/assets/img/**'])    
+    gulp.src(['./dev/assets/img/**'])    
     .pipe(gulp.dest('build/assets/img/'))
 
-     
+    gulp.src(['./dev/assets/data/**'])    
+    .pipe(gulp.dest('build/assets/data/'))
+
+    gulp.src(['./dev/assets/js/lib/jquery-1.12.1.min.js','./dev/assets/js/lib/angular.js','./dev/assets/js/lib/angular-animate.js','./dev/assets/js/lib/angular-sanitize.js','./dev/assets/js/lib/angular-ui-router.js','./dev/assets/js/lib/angular-mocks.js','./dev/assets/js/app.js','./dev/modules/**/*controller.js','./dev/modules/**/*directive.js'])
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('build/assets/js/'))
+
+    .pipe(livereload())
 
     .pipe(notify({ message: 'All files task complete' }));  
 
@@ -90,7 +79,7 @@ gulp.task('copyFiles', function() {
 // Watch
 gulp.task('watch', function() {
   // Watch .scss files
-  gulp.watch(['dev/assets/scss/**','dev/index.html','dev/modules/**/**','dev/assets/js/*'], ['sass','copyFiles','scripts']);
+  gulp.watch(['dev/assets/css/**','dev/index.html','dev/modules/**/**','dev/assets/js/*'], ['sass','copyFiles']);
 
   nodemon({
     // the script to run the app
@@ -110,7 +99,7 @@ gulp.task('watch', function() {
 
 gulp.task('default', function(callback) {
   runSequence('clean',
-              ['sass','copyFiles','scripts','watch'])
+              ['sass','copyFiles','watch'])
 });
 
 

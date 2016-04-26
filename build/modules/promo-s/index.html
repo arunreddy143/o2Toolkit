@@ -1,6 +1,36 @@
 <div class="grid">
-<div class="section-wrap col-3"> 
-  <promo-s-directive /> 
+	<div class="" ng-repeat="moduleData in moduleData | filter:{name:'Promo S'}">
+	<div class="module label-xxl desktop-fragments-label-xxl-2" > 
+       <h2 >{{moduleData.name}}</h2> 
+       <div class="line"></div> 
+      </div>
+	
+	<div class="default-txt-container" ng-repeat="specs in moduleData.component.specification">
+
+		<p>{{specs.description}}</p>
+
+		<full-spec name="View Full Specifications"  />
+		<div class="fullSpecs" ng-bind-html="specs.full"></div>
+
+
+
+	</div>
+
 </div>
+	
+<button addmodules>Add Module</button><br /><br />
+
+
+<div class="section-wrap col-3" id="section"> 
+	 
+
+  <promo-s-directive moduledata="{{moduleData}}" /> 
+</div>
+
+<div class="code-snippet">
+	<h2 >Code Snippet</h2>
+	<pre class="prettyprint">&lt;table&gt;&lt;tr&gt;<td>adsas</td></tr></pre>
+
+	</div>
 </div>
 

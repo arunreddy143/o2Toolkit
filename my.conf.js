@@ -1,11 +1,11 @@
 // Karma configuration
-// Generated on Wed Oct 07 2015 23:28:26 GMT+0100 (GMT Daylight Time)
+// Generated on Sun Apr 24 2016 18:04:46 GMT+0100 (GMT Daylight Time)
 
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: './',
 
 
     // frameworks to use
@@ -15,8 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'dev/assets/*.js',
-        'dev/modules/countDownTimer/*test.js'
+        'build/assets/js/*.js',
+        'dev/modules/**/*unit-testing.js'
     ],
 
 
@@ -61,6 +61,10 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+
+    // Concurrency level
+    // how many browser should be started simultaneous
+    concurrency: Infinity
   })
 }

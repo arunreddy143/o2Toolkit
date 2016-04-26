@@ -1,0 +1,76 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'PhantomJS',
+1 verbose cli   '--save-dev' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 warn package.json satellizer-server@0.0.0 No repository field.
+6 warn package.json gulp-minify-css@1.2.4 No repository field.
+7 warn package.json path@0.12.7 path is also the name of a node core module.
+8 warn package.json window@1.0.0 No repository field.
+9 warn package.json window@1.0.0 No README data
+10 verbose readDependencies using package.json deps
+11 verbose cache add [ 'PhantomJS', null ]
+12 verbose cache add name=undefined spec="PhantomJS" args=["PhantomJS",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'PhantomJS',
+13 verbose parsed url   path: 'PhantomJS',
+13 verbose parsed url   href: 'PhantomJS' }
+14 silly lockFile b8bed22c-PhantomJS PhantomJS
+15 verbose lock PhantomJS C:\Users\ctsuser\AppData\Roaming\npm-cache\b8bed22c-PhantomJS.lock
+16 silly lockFile b8bed22c-PhantomJS PhantomJS
+17 silly lockFile b8bed22c-PhantomJS PhantomJS
+18 verbose addNamed [ 'PhantomJS', '' ]
+19 verbose addNamed [ null, '*' ]
+20 silly lockFile bc06a96e-PhantomJS PhantomJS@
+21 verbose lock PhantomJS@ C:\Users\ctsuser\AppData\Roaming\npm-cache\bc06a96e-PhantomJS.lock
+22 silly addNameRange { name: 'PhantomJS', range: '*', hasData: false }
+23 verbose url raw PhantomJS
+24 verbose url resolving [ 'https://registry.npmjs.org/', './PhantomJS' ]
+25 verbose url resolved https://registry.npmjs.org/PhantomJS
+26 info trying registry request attempt 1 at 00:37:01
+27 verbose etag "BE4UANUXAQWEFOFLNHYA2Z7WT"
+28 http GET https://registry.npmjs.org/PhantomJS
+29 http 404 https://registry.npmjs.org/PhantomJS
+30 silly registry.get cb [ 404,
+30 silly registry.get   { 'content-type': 'application/json',
+30 silly registry.get     'cache-control': 'max-age=0',
+30 silly registry.get     'content-length': '2',
+30 silly registry.get     'accept-ranges': 'bytes',
+30 silly registry.get     date: 'Sun, 24 Apr 2016 23:35:39 GMT',
+30 silly registry.get     via: '1.1 varnish',
+30 silly registry.get     age: '0',
+30 silly registry.get     connection: 'keep-alive',
+30 silly registry.get     'x-served-by': 'cache-lcy1132-LCY',
+30 silly registry.get     'x-cache': 'MISS',
+30 silly registry.get     'x-cache-hits': '0',
+30 silly registry.get     'x-timer': 'S1461540939.443670,VS0,VE104',
+30 silly registry.get     vary: 'Accept-Encoding' } ]
+31 silly lockFile bc06a96e-PhantomJS PhantomJS@
+32 silly lockFile bc06a96e-PhantomJS PhantomJS@
+33 error 404 Not Found
+33 error 404
+33 error 404 'PhantomJS' is not in the npm registry.
+33 error 404 You should bug the author to publish it
+33 error 404 It was specified as a dependency of 'satellizer-server'
+33 error 404
+33 error 404 Note that you can also install from a
+33 error 404 tarball, folder, or http url, or git url.
+34 error System Windows_NT 6.1.7601
+35 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "PhantomJS" "--save-dev"
+36 error cwd D:\o2\ToolKit\o2Toolkit
+37 error node -v v0.10.29
+38 error npm -v 1.4.14
+39 error code E404
+40 verbose exit [ 1, true ]

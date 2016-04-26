@@ -5,11 +5,6 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var express = require('express');
 var logger = require('morgan');
-var request = require('request');
-
-
-
-
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -22,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 if (app.get('env') === 'production') {
   app.use(function(req, res, next) {
     var protocol = req.get('x-forwarded-proto');
+
     protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
   });
 }

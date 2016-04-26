@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="MyApp">
+<html ng-app="myApp" class="backgroundsize">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +11,13 @@
   <link rel="stylesheet" href="//static.o2.co.uk/shared/css/custom-classes.css?ts=240320160945" type="text/css" /> 
   <link rel="stylesheet" href="//static.o2.co.uk/shared/css/global.css?ts=240320160945" type="text/css" /> 
   <link rel="stylesheet" href="//static.o2.co.uk/shared/css/_all-modules.css?ts=240320160945" type="text/css" /> 
+  <link rel="stylesheet" href="assets/css/styles.css" type="text/css" /> 
+  
    
   
 </head>
-<body> 
-  
+<body ng-cloak ng-controller="modulesController"> 
+  <div id="o2-page-wrapper">
 <div ng-include="'../templates/header.html'"></div>
 
   
@@ -30,37 +32,37 @@
          <p>Web components and page Templates</p>
          
         </div> 
-        <form action="" method="GET" >
-         <label for"search"="">Search for modules</label> 
-         <div class="fieldandsubmitbar"> 
-          <input type="text" autocomplete="on" name="query" placeholder="Keywords"> 
-          <input type="submit" value="" > 
-         </div> 
-        </form> 
+        <form-search /> 
        </div> 
       </div> 
      </div> 
     </div> 
    </div>
 
+<div class="grid" >
+  <div class="grid-row">
+    
 
-<ul>
-  <li><a ui-sref="promoM">Promo M</a></li>
-  <li><a ui-sref="promoS">Promo S</a></li>
-</ul>
-  
-<div ui-view></div>
+    <ul>
+      <li><a ui-sref="promoM">Promo M</a></li>
+      <li><a ui-sref="promoS">Promo S</a></li>
+    </ul>
+
+    
+        
+      <div ui-view></div>
+</div>
+</div>
 
 
 <div ng-include="'../templates/footer.html'"></div>
 
+</div>
+
 <!-- Third-party Libraries -->
 
-<script src="/assets/js/lib/jquery-1.12.1.min.js"></script>
-<script src="/assets/js/lib/angular.js"></script>
-<script src="/assets/js/lib/angular-ui-router.js"></script>
-<!-- Application Code -->
-<script src="/assets/js/app.js"></script>
+
+
 <script src="/assets/js/all.js"></script>
 </body>
 </html>
