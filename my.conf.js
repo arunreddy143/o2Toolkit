@@ -15,26 +15,42 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'build/assets/js/*.js',
+        'dev/assets/js/lib/jquery-1.12.1.min.js',
+        'dev/assets/js/lib/angular.js',
+        'dev/assets/js/lib/angular-animate.js',
+        'dev/assets/js/lib/angular-sanitize.js',
+        'dev/assets/js/lib/angular-ui-router.js',
+        'dev/assets/js/lib/angular-mocks.js',
+        'dev/assets/js/app.js',
+        'dev/modules/**/*controller.js',
+        'dev/modules/**/*directive.js',
         'dev/modules/**/*unit-testing.js'
     ],
 
 
     // list of files to exclude
     exclude: [
+        
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'dev/modules/**/*.js': 'coverage'
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress','coverage'],
+
+     // optionally, configure the reporter
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
 
 
     // web server port

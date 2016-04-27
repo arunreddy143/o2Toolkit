@@ -19,15 +19,45 @@ describe('Full spec directive', function() {
     
   });
 
-   it("should compute the size to create other values", function() {
-    $(element).trigger('click');
-    expect(element.class).toBe('hide')
+   it("Specifications Click Handler", function() {
+    $(element).triggerHandler('click');
+    
+  });
+ 
+
+});
+
+
+describe('Promo S directive', function() {
+  var compile, scope, directiveElem,moduleData;
+
+    beforeEach(function(){
+      module('myApp');
+      
+      inject(function($compile, $rootScope){
+        compile = $compile;
+        scope = $rootScope.$new();
+      });
+      
+      directiveElem = getCompiledElement();
+    });
+
+    function getCompiledElement(){
+      var element = angular.element('<promo-s-directive moduledata="{{'+moduleData+'}}"></promo-s-directive');
+      var compiledElement = compile(element)(scope);
+      scope.$digest();
+      return compiledElement;
+    }
+
+    it('should have span element', function () {
+      var spanElement = directiveElem;
+      console.log(spanElement.html());
+      
+    });
+ 
+
 
 
     
     
   });
-
-  
-
-});
