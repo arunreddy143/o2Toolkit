@@ -3,15 +3,19 @@ myApp.directive('promoSDirective', function($compile) {
       restrict: 'AE',
       replace: true,
       scope:{moduledata:"@"},
-      template: `<div class="module promo-s {{extraClass}}"><div class="desktop-fragments-promoS-group-1 promo bkg-img"><div class="module-body"> 
-	      <div class="info"> 
-	       <h3 contenteditable="true">{{module.title}}</h3> 
-	       <p> {{module.copy}} </p> 
-	       <p class="product-cta">{{module.cta}}</p> 
-	      </div> 
-	     </div> <span class="hover-down"></span>
+      template: `
+      <div class="module promo-s {{extraClass}}" data-behavior="sample_code"> 
+	<div class="desktop-fragments-promoS-group-1 promo bkg-img">
+		<div class="module-body">
+			<div class="info"> 
+				<h3 contenteditable="true">{{module.title}}</h3> 
+				<p> {{module.copy}} </p> 
+				<p class="product-cta">{{module.cta}}</p> 
+			</div> 
 		</div> 
-		</div>`,
+	<span class="hover-down"></span>
+	</div> 
+</div>`,
 		link: function ( $scope, element, attrs ) { 
 			var moduleJson=JSON.parse($scope.moduledata);
 			angular.forEach(moduleJson, function(moduleVal, key) {				

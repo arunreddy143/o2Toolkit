@@ -21,6 +21,7 @@
                 "dd": "",
                 "bp2": "",
                 "bp3": "",
+                
                 "specification": [
                     {
                         "description": "The module contains group of two columns. Each column contains an image and copy with a hyperlink. Also a label can be added to the group. It can also be configured to add modals.",
