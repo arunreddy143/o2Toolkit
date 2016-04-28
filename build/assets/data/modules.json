@@ -4,7 +4,7 @@
             "name": "Promo S",
             "url": "promoS/index.html",
             "component": {
-                "title": "Loren ipsum",
+                "title": "Lorem ipsum",
                 "copy": "This is copy",
                 "cta": "This is  CTA link",
                 "ctaUrl": "google.com",
