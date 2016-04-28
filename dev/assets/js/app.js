@@ -69,9 +69,9 @@ myApp.directive('formSearch', function(){
       }  
 });
 
-myApp.filter('pretty', function(){
-    return function(text) {
-        return prettyPrintOne(text);
-    }
+commentApp.filter('unsafe', function($sce) {
+    return function(val) {
+        return $sce.trustAsHtml(val);
+    };
 });
 
