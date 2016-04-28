@@ -49,7 +49,7 @@ describe('Promo S directive', function() {
       return compiledElement;
     }
 
-    it('should have span element', function () {
+    it('should have directive testing', function () {
       var spanElement = directiveElem;
       console.log(spanElement.html());
       

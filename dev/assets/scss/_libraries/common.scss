@@ -1,0 +1,245 @@
+//********** Pallete
+$colorRed: #990000;
+$colorWhite: #ffffff;
+$colorBlack: #000000;
+$colorBlueDark: #032b5a;
+$colorBlueDarker: #061f47;
+$colorBlueLight: #419eda;
+$colorGreyDark: #efefef;
+$colorGreyDarker: #d8d8d8;
+$colorGreyDarkest: #8e97a8;
+$colorGreyLight: #f8f8f8;
+
+$colorGrey2: #ececec;
+$colorGrey3: #ebebeb;
+$colorGrey4: #f9f9f9;
+$colorGrey5: #eaeaea;
+$colorGrey6: #d9d9d9;
+$colorGrey7: #f7f7f7;
+$colorGrey8: #e3e3e3;
+$colorGrey9: #d0d0d0;
+$colorGrey10: #dbdbdb;
+$colorBlue2: #449ed0;
+
+$colorTransparent: transparent;
+
+$colorInputPlaceholderText: #6b7a8d;
+$colorInputBorder: #b6b6b6;
+
+$navToolbarGradStart: rgba(13,54,107,1);
+$navToolbarGradEnd: rgba(11,94,153,1);
+$navToolBarButtonOffText: $colorWhite;
+$navToolBarButtonOnText: $colorWhite;
+$navToolBarButtonOffGradStart: rgba(48,91,148,1);
+$navToolBarButtonOffGradEnd: rgba(22,48,104,1);
+$navToolBarButtonOnGradStart: rgba(102,102,102,1);
+$navToolBarButtonOnGradEnd: rgba(17,17,17,1);
+
+$formSubmitButtonStart: #419eda;
+$formSubmitButtonEnd: #2f7cb4;
+$formResetButtonStart:$colorGreyLight;
+$formResetButtonEnd:#e6e6e6;
+$formResetButtonBorder:#bebebe;
+
+$formSubmitButtonHoverStart:#2870a7;
+$formSubmitButtonHoverEnd:#1d5c90;
+$formResetButtonHoverStart:#f2f3f4;
+$formResetButtonHoverEnd:#b1bcc9;
+$formResetButtonActive:#bfc5cc;
+
+// Assetpath variables
+$assetPathWWW: "//static.preview1s.o2.co.uk/www";
+$assetPathShared: "//static.preview1s.o2.co.uk/shared";
+$cmsAssetPathWWW: "/www";
+$cmsAssetPathShared: "/shared";
+
+// Font variables
+$frutiger55: Frutiger55, sans-serif;
+$frutiger65Bold: Frutiger65Bold, sans-serif;
+$frutiger45Light: Frutiger45Light, sans-serif;
+$frutiger46Italic: Frutiger46Italic, sans-serif;
+
+// Breakpoint variables
+$breakpoint1: 320px;
+$breakpoint2: 575px;
+$breakpoint3: 815px;
+$breakpoint4: 972px;
+$breakpoint5: 1100px;
+
+
+//default is vertical
+@mixin background-linear-gradient($startcolor, $endcolor, $fallbackImage: url(), $startpos:top, $endpos:bottom) {
+  // fallback
+  background: $startcolor;
+  background-image: $fallbackImage;
+  background-image: -moz-linear-gradient($startpos, $startcolor 0%, $endcolor 100%); // FF3.6+
+  //this line needs thought regarding left ie should be variable
+  background-image: -webkit-gradient(linear, left $startpos, left $endpos, color-stop(0%,$startcolor), color-stop(100%,$endcolor)); // Chrome,Safari4+
+  background-image: -webkit-linear-gradient($startpos, $startcolor 0%,$endcolor 100%); // Chrome10+,Safari5.1+
+  background-image: -o-linear-gradient($startpos, $startcolor 0%,$endcolor 100%); // Opera 11.10+
+  background-image: -ms-linear-gradient($startpos, $startcolor 0%,$endcolor 100%); // IE10+
+  background-image: linear-gradient(to $endpos, $startcolor 0%,$endcolor 100%); // W3C
+}
+
+@mixin background-linear-gradient-horiz($startcolor, $endcolor){
+  @include background-linear-gradient($startcolor, $endcolor, left, right);
+}
+
+@mixin border-radius($radius: 5px) {
+  @include multi-border-radius ($radius, $radius, $radius, $radius);
+}
+@mixin border-radius-left($radius: 5px) {
+  @include multi-border-radius ($radius, 0, 0, $radius);
+}
+@mixin border-radius-right($radius: 5px) {
+  @include multi-border-radius (0, $radius, $radius, 0);
+}
+
+@mixin multi-border-radius($topLeft: 5px, $topRight: 5px, $bottomRight: 5px, $bottomLeft: 5px) {
+    -webkit-border-top-left-radius: $topLeft;
+    -webkit-border-top-right-radius: $topRight;
+    -webkit-border-bottom-right-radius: $bottomRight;
+    -webkit-border-bottom-left-radius: $bottomLeft;
+    -moz-border-radius-topleft: $topLeft;
+    -moz-border-radius-topright: $topRight;
+    -moz-border-radius-bottomright: $bottomRight;
+    -moz-border-radius-bottomleft: $bottomLeft;
+    border-top-left-radius: $topLeft;
+    border-top-right-radius: $topRight;
+    border-bottom-right-radius: $bottomRight;
+    border-bottom-left-radius: $bottomLeft;
+}
+
+
+@mixin box-shadow($hoffset: 5px, $voffset: 5px, $blur: 5px, $spread: 5px, $color: #ccc){
+  -moz-box-shadow:    $hoffset $voffset $blur $spread $color;
+  -webkit-box-shadow: $hoffset $voffset $blur $spread $color;
+  box-shadow:         $hoffset $voffset $blur $spread $color;
+  /*
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#d3d3d3')";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#d3d3d3');
+   */
+}
+
+@mixin box-shadow-none {
+  -moz-box-shadow:    none;
+  -webkit-box-shadow: none;
+  box-shadow:         none;
+}
+
+//@mixin border-radius-full($topleft, $topright, $bottomright, $bottomleft){
+//  -moz-border-radius: $topleft, $topright, $bottomright, $bottomleft;
+//  -webkit-border-radius: $topleft, $topright, $bottomright, $bottomleft;
+//  border-radius: $topleft, $topright, $bottomright, $bottomleft;
+//}
+
+//@mixin border-left-radius($radius){
+//  @include border-radius-full($radius, 0, 0, $radius);
+//}
+
+//@mixin border-radius($radius){
+//  @include border-radius-full($radius, $radius, $radius, $radius);
+//}
+
+//********** Urls
+$baseSharedImg: '';
+
+// Shared Global Images
+
+$TelefonicaLogo: "/img/sprite-logo-telefonica.png";
+
+// Mobile Nav images / elements
+
+$mobileNavFooter: "/img/mobile-nav-bg.png";
+$footerGradient: "/img/footer/footer-gradient.png";
+$footerGradientMobile: "/img/footer/footer-gradient-mobile.png";
+$footerSocialSprite: "/img/footer/footer-sprite-social-icons.png";
+$footerBubble: "/img/footer/footer-bubbles.png";
+$footerListSplitter: "/img/footer/footer-list-splitter.png";
+$footerO2BussinessBlog: "/img/footer/footer-sprite-blog-icon.png"; 
+
+// CTA Arrow on Module's
+
+$productSbg: "/img/box-shine.png";
+$ctaArrow: "/img/promo-cta-arrow.png";
+$ctaArrowDown: "/img/arrow-down.png";
+$ctaArrowDownSprite: "/img/arrow-down-sprite.png";
+
+$downloadLink: "/img/download-link.png";
+
+$dividerRepeat: "/img/divider-repeat.png";
+$dividerLeftRight: "/img/divider-left-right.png";
+
+$generic-text-shaded-background: "/img/generic-text-background.jpg";
+
+// Forms
+
+@mixin placeholder {
+  placeholder { @content }
+  :-moz-placeholder { @content }
+  ::-moz-placeholder { @content; }
+  ::-webkit-input-placeholder { @content }
+  :-ms-input-placeholder { @content }
+}
+
+@mixin parent-placeholder {
+  &:-moz-placeholder { @content }
+  &::-moz-placeholder { @content; }
+  &::-webkit-input-placeholder { @content }
+  &:-ms-input-placeholder { @content }
+}
+
+@mixin ease-transition ($time:1s){
+  -webkit-transition: all $time ease-in-out;
+  -moz-transition: all $time ease-in-out;
+  -ms-transition: all $time ease-in-out;
+  -o-transition: all $time ease-in-out;
+  transition: all $time ease-in-out;
+}
+
+@mixin opacity($trans) {
+filter: alpha(opactiy=($trans * 100));
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})";
+-moz-opacity: $trans;
+-khtml-opacity: $trans;
+opacity: $trans;
+}
+
+@mixin border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// [AJ] Should seperate out variables, functions, utils, etc
+
+$base-font-size: 16;
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// use ems for media queries as chrome has issues using rems
+// https://bugs.webkit.org/show_bug.cgi?id=78295
+@function convert-to-em($value, $base-value: $base-font-size) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @return $value;
+}
+
+// use rems with px fall back for everything else
+@function convert-to-rem($value, $base-value: $base-font-size) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @return $value;
+}
+@mixin font-size($sizeValue) {
+  font-size: ($sizeValue) + px;
+  font-size: convert-to-rem($sizeValue);
+}
+
+@mixin skewDegree($skewValue) {
+  -webkit-transform: skew($skewValue);
+  -moz-transform: skew($skewValue);
+  -ms-transform: skew($skewValue);
+  -o-transform: skew($skewValue);
+  transform: skew($skewValue);
+}

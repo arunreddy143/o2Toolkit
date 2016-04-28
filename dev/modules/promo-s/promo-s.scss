@@ -1,3 +1,391 @@
-.promo-s {
-	
+@import "assets/scss/_libraries/common";
+
+.no-js, .no-backgroundsize { 
+  .promo-s .bkg-img{
+    background-size:auto;
+    background-position:center center;
+  } 
 }
+.backgroundsize{
+  .promo-s .bkg-img{
+    background-size:cover;
+    background-position:right center;
+  }
+}
+
+// For Promo S No CTA - NSPCC - Removing hover from the block
+.section-wrap {
+  .module {
+    &.promo_no_hover {
+      &:hover {
+       cursor: default;
+      }
+    }
+  }
+}
+
+.promo-s {  
+  position: relative;
+	display:block;
+	width: 100%;
+	overflow:hidden;
+	.bkg-img{
+    position: relative;
+    display:block;
+    width: 100%;
+    overflow:hidden;
+  }
+  a {
+    float:left;
+    display:block;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }	
+	.module-body{
+	  background-color: $colorTransparent;
+    background-repeat:  no-repeat;
+    background-position:  center center;
+    background-attachment: scroll;
+    background-image: none;
+		width: 66%;
+		height: 150px;
+		float:left;
+		display: block;
+		margin: 0;		
+		.info,
+        .module-body-content {
+		   
+			padding: 20px 0 20px 20px;
+			p {
+				color: $colorWhite;
+				width: 80%;
+				font-size: 0.75em;
+			}
+			.product-cta {
+				color: $colorWhite;
+				background: url($assetPathShared + $ctaArrow) no-repeat scroll 0 -95px transparent;
+				position: absolute;
+				padding: 0 0 5px 25px;
+				display: block;
+				font-size: 0.875em;
+				bottom: 15px;
+			}
+			h3{
+				color: $colorWhite;
+				font-size: 1.25em;
+				line-height:1em;
+				margin: 0 0 10px 0;
+			}  
+		}
+	}
+	
+	
+	.diagonal{
+		.module-body {
+			background: url($assetPathShared + '/img/modules/module-bg-diagonal.png') no-repeat scroll right 0;
+		}
+	}
+   &.tall{
+    .module-body{
+      height:150px;
+      .info,
+      .module-body-content {
+        padding: 25px 0 25px 20px;
+        min-height: 100px;
+      }
+    }
+  }
+  
+	&.dark{
+		background-color: $colorBlueDark;
+	}
+	
+	&.light {
+		background-color: $colorGreyDark;
+		.module-body {
+      .info,
+      .module-body-content {
+        .product-cta {
+          background-position: -2px -35px;
+          color: $colorBlueLight;
+          }
+          h3, p {
+            color: $colorBlueDark;
+          }
+        }
+      }    
+  		&.diagonal {
+  			.module-body{
+  				background-image: url($assetPathShared + '/img/modules/module-bg-diagonal-light.png');  
+   				.product-cta {
+  					color: $colorBlueLight;
+  			}
+  		}
+    }
+	}
+		
+	&.transparent {
+		background-color: $colorTransparent;
+		.module-body {
+			.info,
+			.module-body-content {
+				.product-cta {
+					background-position: -2px -35px;
+					color: $colorBlueLight;
+				}
+				h3, p {
+					color: $colorBlueDark;
+				}
+			}
+		}
+	}
+
+  &.transparentWhite {
+    background-color: $colorTransparent;
+    .module-body {
+      .info{
+        border:0 none;
+      }
+      .info,
+      .module-body-content {
+        .product-cta {
+          background-position: -2px -35px;
+          color: $colorWhite;
+        }
+        h3, p {
+          color: $colorWhite;
+        }
+      }
+    }
+  }
+
+	&.light-block{
+    background-position: center right;
+		.module-body {
+			background: url($assetPathShared + '/img/modules/module-bg-white-box-mobile.png') repeat-x scroll 0 0 transparent;
+			.info,
+			.module-body-content{
+        .product-cta {
+          background-position: -2px -35px;
+          color: $colorBlueLight;
+		  		}
+				h3, p {
+					color: $colorBlueDark;
+				}
+			}
+		}
+	}
+
+  &.recycle {
+    cursor: default !important;
+    .module-body {
+      .info,
+      .module-body-content {
+        iframe {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: $breakpoint2){ // middle
+
+  .promo-s {
+    .bkg-img{
+      background-size:auto !important;
+      background-position: center top !important;
+    }
+    h3 {
+      font-size: 1.500em;
+      line-height: 1.097em;
+      margin: 0 0 8px;
+    }
+    .module-body{
+      height:200px;
+      width: 155px;
+      .info,
+      .module-body-content{
+        border-left: 1px solid $colorWhite;
+        padding: 20px 0 20px 20px;
+        height:160px;
+        h3{
+          font-size: 1.5em;
+        }        
+        p{
+          width: 100%;
+          font-size: 0.750em;
+          font-family: $frutiger55;
+        }
+        .product-cta {
+          bottom: 20px;
+        }
+      }
+    }
+    &.transparent{
+      .info,
+      .module-body-content{
+        border-left: 1px solid $colorGreyDark;     
+      }
+    }
+  	&.light-block{
+  		.module-body{
+  			background: url($assetPathShared + '/img/modules/module-bg-white-box.png') repeat scroll 0 0 transparent;			
+  		}
+  	}
+  	&.diagonal{
+      .module-body{
+        width:90%;
+        p{
+          width:85%;
+        }
+      }
+    }
+    &.recycle {
+      .module-body {
+        .info,
+        .module-body-content {
+          h3 {
+            height: 52px;
+          }
+        }
+      }
+    }
+  	
+    &.tall{
+    .module-body{
+      height:300px;
+      width:92%;
+      .info,
+      .module-body-content{
+        padding: 30px 0 30px 20px;
+        min-height: 250px;
+        p{
+          width: 90%;
+          font-size: 0.875em;
+        }
+      }
+    }
+    &.light-block {
+      .module-body{
+        background-image: url($assetPathShared + '/img/modules/module-bg-white-box-tall-desktop.png');
+        width:63%;  
+      }
+    }
+   }
+  }
+  .col-3 .module:first-child{
+    .info,
+    .module-body-content{
+    border-left: none;
+    }
+  }
+  //.col-3 .promo-s, .col-1third .promo-s{ 
+  //  .module-body{
+  //    width: 92% 
+  //  }
+  //}
+  
+}
+
+
+@media screen and (min-width: $breakpoint3){ // Desktop
+
+	.promo-s{
+    .bkg-img{
+      background-size:auto !important;
+      background-position: center top !important;
+    }
+		.module-body{
+			width:80%;
+		.info,
+		.module-body-content{
+			height: 140px;
+			padding: 30px 0 30px 30px;			
+			  h3 {
+				font-size: 1.5em;
+			  }
+			  p{
+        width: 75%;
+				font-size: 0.750em;
+			  }
+			  .product-cta {
+				font-size: 0.875em;
+			  }
+			}
+		}
+		&.diagonal{
+      .module-body{
+        width:80%;
+        p{
+          width:85%;
+        }
+      }
+    }
+    &.recycle {
+      .module-body {
+        .info,
+        .module-body-content {
+          h3 {
+            height: 42px;
+          }
+        }
+      }
+    }
+    &.tall{
+      .module-body{
+        height:260px;
+        width:65%;
+        .info,
+		.module-body-content{
+          min-height: 200px;
+          padding: 30px 0 30px 30px;
+          h3{
+            font-size: 1.750em;
+          }
+          p{
+          font-size: 0.875em;
+          width:90%;
+          }
+        }
+      }
+      &.light, 
+      &.light-block{
+        .module-body{
+          width:67%;
+        }        
+      }
+      &.light-block{
+        .module-body{
+          background-image: url($assetPathShared + '/img/modules/module-bg-white-box-tall-desktop.png');
+        }
+      }
+    }
+  } 
+  
+  .col-2 {
+    .light-block{
+      .module-body{
+        width: 240px;
+      }
+    }
+  }
+  .col-3 {
+   .promo-s.light-block{
+   .module-body{
+    width: 65%;
+    .info,
+    .module-body-content {
+        p {
+          width:85%;
+        }
+    }
+   }
+  }
+ }
+
+} 

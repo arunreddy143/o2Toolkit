@@ -69,3 +69,9 @@ myApp.directive('formSearch', function(){
       }  
 });
 
+myApp.filter('pretty', function(){
+    return function(text) {
+        return prettyPrintOne(text);
+    }
+});
+

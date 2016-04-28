@@ -40167,6 +40167,12 @@ myApp.directive('formSearch', function(){
       }  
 });
 
+myApp.filter('pretty', function(){
+    return function(text) {
+        return prettyPrintOne(text);
+    }
+});
+
 
 
 myApp.directive('promoSDirective', function($compile) {
@@ -40174,7 +40180,7 @@ myApp.directive('promoSDirective', function($compile) {
       restrict: 'AE',
       replace: true,
       scope:{moduledata:"@"},
-      template: `<div class="module promo-s {{extraClass}}" ng-click="open()"><div class="desktop-fragments-promoS-group-1 promo bkg-img"><div class="module-body"> 
+      template: `<div class="module promo-s {{extraClass}}"><div class="desktop-fragments-promoS-group-1 promo bkg-img"><div class="module-body"> 
 	      <div class="info"> 
 	       <h3 contenteditable="true">{{module.title}}</h3> 
 	       <p> {{module.copy}} </p> 
