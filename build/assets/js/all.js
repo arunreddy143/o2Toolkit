@@ -40184,23 +40184,45 @@ myApp.directive('preCode', function(){
       }  
 });
 
-myApp.directive('formSearch', function(){
+myApp.controller('formSearchController',function($scope,$state){
+
+  $scope.selectedModule = "";
+  $scope.modulesName = ["Promo M","Promo S","Promo XXL","Promo M Group"];
+  $scope.clicker = function(){
+    found = $.inArray($scope.selectedModule, $scope.modulesName) > -1
+    if(found){
+      if($scope.selectedModule == 'Promo M'){
+        $state.go('promoM')
+      }
+      else if($scope.selectedModule == 'Promo S'){
+        $state.go('promoS')
+      }
+    }
+  }
+
+});
+
+myApp.directive('formSearch', function($timeout){
     return {
       restrict: 'AE',
       replace: true,
+      controller: 'formSearchController',
       scope:{name:"@"},
-      template:`<form action="" method="GET">
+      template:`<form autocomplete="off" action="" method="GET">
          <label for"search"="">Search for modules</label> 
          <div class="fieldandsubmitbar"> 
-          <input type="text" autocomplete="on" name="query" placeholder="Keywords"> 
-          <input type="submit" value="" > 
+          <input type="text" list="modules" ng-model="selectedModule" ng-change="clicker()" name="query" placeholder="Keywords"> 
+          <input type="submit" value="" >
+          <datalist id="modules">
+            <option ng-repeat="modules in modulesName">{{modules}}</option>
+          </datalist>
          </div> 
         </form>`,
-      link:function($scope, element, attrs) {
-          
-      }
+      link:function(scope, element, attrs) {
+        
+        }
 
-      }  
+      };  
 });
 
 
