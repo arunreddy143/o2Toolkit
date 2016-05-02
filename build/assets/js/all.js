@@ -40128,6 +40128,7 @@ myApp.controller('modulesController',['$scope','modulesService', function($scope
         $scope.moduleData=httpData.data.modules;
         
     });
+
 }]);
 
 
@@ -40224,6 +40225,72 @@ myApp.directive('formSearch', function($timeout){
 
       };  
 });
+
+
+myApp.controller('deviceViewController',function($scope,$window){
+   var openedwindow = '';
+  $scope.viewshow = true; 
+
+  if(getParameterByName('hidelinks')){
+       $scope.viewshow = false; 
+    }
+  
+  $scope.openwindow = function(view,orientation) {
+    if (openedwindow != ''){
+        openedwindow.close();
+     }
+
+    if(view == 'mobile'){
+      if(orientation == 'portrait'){
+        wd = '320';
+        ht = '480';  
+      }else{
+        wd = '480';
+        ht = '320'; 
+      }
+    }
+    else{
+      if(orientation == 'portrait'){
+        wd = '768';
+        ht = '1024'; 
+      }
+      else{
+        wd = '1024';
+        ht = '768'; 
+      }
+    }
+      val = window.location.href;
+        openedwindow = $window.open( val+ '?hidelinks=true','targetWindow','toolbar=no,location=no, status=no, menubar=no, scrollbars=yes,resizable=yes,width='+ wd + ', height='+ht);
+
+    }
+
+});
+
+myApp.directive('deviceView',function(){
+
+  return{
+
+    restrict: 'AE',
+    scope:{
+        openwindow: '&'
+    },
+    templateUrl: 'templates/device-view.html' ,
+    controller: 'deviceViewController',
+    replace:true
+
+  };
+
+});
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
 
 
