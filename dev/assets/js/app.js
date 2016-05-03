@@ -7,13 +7,13 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         
         // HOME STATES AND NESTED VIEWS ========================================
         .state('promoM', {
-            url: 'promoM',
+            url: '/promoM',
             templateUrl: 'modules/promo-m/index.html'
         })
         
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('promoS', {
-             url: 'promoS',
+             url: '/promoS',
             templateUrl: 'modules/promo-s/index.html'     
         })
         .state('/', {
@@ -124,6 +124,7 @@ myApp.directive('formSearch', function($timeout){
           <input type="submit" value="" >
           <datalist id="modules">
             <option ng-repeat="modules in modulesName">{{modules}}</option>
+            <a ui-sref="promoM">Promo M</a>
           </datalist>
          </div> 
         </form>`,
