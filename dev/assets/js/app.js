@@ -15,7 +15,13 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state('promoS', {
              url: 'promoS',
             templateUrl: 'modules/promo-s/index.html'     
+        })
+        .state('/', {
+            url: '/',
+            templateUrl: 'modules/aboutToolkit/index.html'
         });
+
+        $urlRouterProvider.otherwise("/");
         
 });
 
