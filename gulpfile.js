@@ -29,9 +29,9 @@ gulp.task('clean', function() {
 gulp.task('sass', function() {
   
 
-    return gulp.src('dev/assets/scss/**')
+    return gulp.src('build/assets/scss/**')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('build/assets/scss'))
+    .pipe(gulp.dest('build/assets/css/'))
 
 
     .pipe(notify({ message: 'Styles task complete' }))
@@ -65,7 +65,7 @@ gulp.task('copyFiles', function() {
     gulp.src(['./dev/assets/data/**'])    
     .pipe(gulp.dest('build/assets/data/'))
 
-    gulp.src(['./dev/assets/js/lib/jquery-1.12.1.min.js','./dev/assets/js/lib/angular.js','./dev/assets/js/lib/angular-animate.js','./dev/assets/js/lib/angular-sanitize.js','./dev/assets/js/lib/angular-ui-router.js','./dev/assets/js/lib/angular-mocks.js','./dev/assets/js/app.js','./dev/modules/**/*controller.js','./dev/modules/**/*directive.js'])
+    gulp.src(['./dev/assets/js/lib/jquery-1.12.1.min.js','./dev/assets/js/lib/angular.js','./dev/assets/js/lib/ui-bootstrap.js','./dev/assets/js/lib/angular-animate.js','./dev/assets/js/lib/angular-sanitize.js','./dev/assets/js/lib/angular-ui-router.js','./dev/assets/js/lib/angular-mocks.js','./dev/assets/js/app.js','./dev/modules/**/*controller.js','./dev/modules/**/*directive.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('build/assets/js/'))
 
@@ -80,7 +80,7 @@ gulp.task('copyFiles', function() {
 // Watch
 gulp.task('watch', function() {
   // Watch .scss files
-  gulp.watch(['dev/assets/css/**','dev/index.html','dev/modules/**/.html','dev/modules/**/.js','dev/assets/js/*'], ['sass','copyFiles']);
+  gulp.watch(['dev/assets/css/**','dev/modules/**/.js','dev/assets/js/*'], ['sass','copyFiles']);
 
   nodemon({
     // the script to run the app

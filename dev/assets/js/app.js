@@ -1,9 +1,9 @@
-var myApp=angular.module('myApp', ['ui.router','ngSanitize']);
+var myApp=angular.module('myApp', ['ui.router','ngSanitize','ui.bootstrap']);
 
 myApp.config(function($stateProvider, $urlRouterProvider) {   
+     
     
-    
-    $stateProvider    
+    $stateProvider           
         
         // HOME STATES AND NESTED VIEWS ========================================
         .state('promoM', {

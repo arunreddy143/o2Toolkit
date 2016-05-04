@@ -11,10 +11,10 @@
 		<full-spec name="View Full Specifications"  />
 		<div class="fullSpecs" ng-bind-html="specs.full"></div>
 	</div>
-
+	
 </div>
 	
-<button addmodules class="btn-primary">Add Module</button><br /><br />
+<button addmodules  class="btn-primary add-module">Add Module</button><br /><br />
 
 
 <div class="section-wrap col-3" id="section"> 
@@ -24,9 +24,39 @@
 </div>
 
 <div class="code-snippet">
-	<h2 >Code Snippet</h2>
+	<div class="module label-xxl desktop-fragments-label-xxl-2" > 
+	       <h2 >Code Snippet</h2> 
+	       <div class="line"></div> 
+	    </div>
 
-	<pre-code class="prettyprint"></pre-code>
+
+<uib-tabset active="active">
+    <uib-tab index="0" heading="HTML">
+
+    <pre-code class="prettyprint"></pre-code>
+
+	</uib-tab>
+   
+    <uib-tab index="1" heading="CSS">
+	<pre>
+/* Code Samples */
+pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	background: #faf8f0;
+}
+#content #pre-stylish code {
+	display: block;
+	padding: 0.5em 1em;
+	border: 1px solid #bebab0;
+}
+	</pre>
+    </uib-tab>
+  </uib-tabset>
+	
+
+	
 	
 
 	</div>
