@@ -4,7 +4,8 @@ myApp.directive('promoSDirective', function($compile) {
       replace: true,
       scope:{moduledata:"@"},
       template: `
-      <div class="module promo-s {{extraClass}}" data-behavior="sample_code"> 
+      <div class="" data-behavior="sample_code">
+      <div class="module promo-s {{extraClass}}" > 
 	<div class="desktop-fragments-promoS-group-1 promo bkg-img">
 		<div class="module-body">
 			<div class="info"> 
@@ -15,7 +16,7 @@ myApp.directive('promoSDirective', function($compile) {
 		</div> 
 	<span class="hover-down"></span>
 	</div> 
-</div>`,
+</div></div>`,
 		link: function ( $scope, element, attrs ) { 
 			var moduleJson=JSON.parse($scope.moduledata);
 			angular.forEach(moduleJson, function(moduleVal, key) {				

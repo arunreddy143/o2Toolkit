@@ -27,17 +27,15 @@ gulp.task('clean', function() {
 
 // Styles
 gulp.task('sass', function() {
-  return sassruby('dev/assets/scss/**', { style: 'expanded' })
-    .pipe(autoprefixer('last 2 version'))
-    .pipe(concat('main.css'))
-    .pipe(gulp.dest('build/assets/css'))  
+  
 
-    .pipe(minifycss())
+    return gulp.src('dev/assets/scss/**')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('build/assets/scss'))
 
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('build/assets/css'))
+
     .pipe(notify({ message: 'Styles task complete' }))
-    .pipe(livereload());
+    
 });
 
 // copy files
@@ -56,7 +54,10 @@ gulp.task('copyFiles', function() {
     .pipe(gulp.dest('build/assets/libs/'))   
 
     gulp.src(['./dev/assets/css/**'])    
-    .pipe(gulp.dest('build/assets/css/'))     
+    .pipe(gulp.dest('build/assets/css/')) 
+
+    gulp.src(['./dev/assets/scss/**'])    
+    .pipe(gulp.dest('build/assets/scss/'))     
 
     gulp.src(['./dev/assets/img/**'])    
     .pipe(gulp.dest('build/assets/img/'))
@@ -79,7 +80,7 @@ gulp.task('copyFiles', function() {
 // Watch
 gulp.task('watch', function() {
   // Watch .scss files
-  gulp.watch(['dev/assets/css/**','dev/index.html','dev/modules/**/**','dev/assets/js/*'], ['sass','copyFiles']);
+  gulp.watch(['dev/assets/css/**','dev/index.html','dev/modules/**/.html','dev/modules/**/.js','dev/assets/js/*'], ['sass','copyFiles']);
 
   nodemon({
     // the script to run the app
