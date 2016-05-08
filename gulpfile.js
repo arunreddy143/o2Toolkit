@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     sassruby = require('gulp-ruby-sass'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
+    minifyCSS  = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
@@ -16,7 +16,9 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     del = require('del'),
     runSequence = require('run-sequence')
-    nodemon=require('gulp-nodemon');
+    nodemon=require('gulp-nodemon')
+    sourcemaps = require('gulp-sourcemaps')
+    concatCss = require('gulp-concat-css');
 
 
 // Clean
@@ -26,17 +28,22 @@ gulp.task('clean', function() {
 
 
 // Styles
-gulp.task('sass', function() {
-  
+gulp.task('sass', function() {  
 
-    return gulp.src('build/assets/scss/**')
+    return gulp.src(['dev/modules/**/*.scss'])
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('build/assets/css/'))
-
+    .pipe(concatCss(""))
+    .pipe(minifyCSS())
+    .pipe(rename('all-modules.min.css'))
+    .pipe(gulp.dest('build/assets/css'))
+    
+    
 
     .pipe(notify({ message: 'Styles task complete' }))
     
 });
+
 
 // copy files
 gulp.task('copyFiles', function() {
@@ -55,9 +62,7 @@ gulp.task('copyFiles', function() {
 
     gulp.src(['./dev/assets/css/**'])    
     .pipe(gulp.dest('build/assets/css/')) 
-
-    gulp.src(['./dev/assets/scss/**'])    
-    .pipe(gulp.dest('build/assets/scss/'))     
+ 
 
     gulp.src(['./dev/assets/img/**'])    
     .pipe(gulp.dest('build/assets/img/'))
@@ -80,7 +85,7 @@ gulp.task('copyFiles', function() {
 // Watch
 gulp.task('watch', function() {
   // Watch .scss files
-  gulp.watch(['dev/assets/css/**','dev/modules/**/.js','dev/assets/js/*'], ['sass','copyFiles']);
+  gulp.watch(['dev/assets/css/**','dev/assets/scss/**/**.scss','dev/modules/**/.js','dev/assets/js/*'], ['sass','copyFiles']);
 
   nodemon({
     // the script to run the app
