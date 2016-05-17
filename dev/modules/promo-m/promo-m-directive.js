@@ -1,26 +1,23 @@
-myApp.directive('promoSDirective', function($compile) {
+myApp.directive('promoMDirective', function($compile) {
   return {
-      restrict: 'AE',  
+      restrict: 'AE', 
       replace: true,
       scope:{moduledata:"@"},
-      template: `
-      <div class="module-section" data-behavior="sample_code">
-      <div class="module promo-s {{extraClass}}" > 
-	<div class="desktop-fragments-promoS-group-1 promo bkg-img">
-		<div class="module-body">
-			<div class="info"> 
-				<h3>{{module.title}}</h3> 
-				<p> {{module.copy}} </p> 
-				<p class="product-cta">{{module.cta}}</p> 
-			</div> 
-		</div> 
-	<span class="hover-down"></span> 
-	</div> 
-</div></div>`,
+      template: ` 
+      <div class="module promo promo1 desktop-fragments-promoM-group-1  module-first diagonal  dark   "> 
+         <a href="https://www.o2.co.uk/shop/phones/apple/iphone-6s/" title="Lorem ipsum" manual_cm_re="promoM-_-iPhone 6s-_-Buy now" target="_self"> 
+          <div class="module-body">  
+           <div class="info"> 
+            <h3>Lorem  ipsum</h3> 
+            <p>Promo-m module with dark and diagonal class</p> 
+            <p class="product-cta">Lorem ipsum</p> 
+           </div> 
+          </div> <span class="hover-down"></span><span class="hover-down"></span></a> 
+        </div> `,
 		link: function ( $scope, element, attrs ) { 
 			var moduleJson=JSON.parse($scope.moduledata);
 			angular.forEach(moduleJson, function(moduleVal, key) {				
-				if(moduleVal.name==="Promo S") {
+				if(moduleVal.name==="Promo M") {
 					$scope.moduleName=moduleVal.name;
 					$scope.master = moduleVal.component;
 					$scope.module=moduleVal.component;
@@ -127,34 +124,3 @@ myApp.directive('promoSDirective', function($compile) {
 		}
   	};
 }); 
-
-
-myApp.directive("fileread", [function () {
-    return {
-        scope: {
-            fileread: "="
-        },
-        link: function (scope, element, attributes) {
-            element.bind("change", function (changeEvent) {
-                var reader = new FileReader();
-                reader.onload = function (loadEvent) {
-                    scope.$apply(function () {
-                        scope.fileread = loadEvent.target.result;
-                    });
-                }
-                reader.readAsDataURL(changeEvent.target.files[0]);
-            });
-        }
-    }
-}]);
-
-
-//Directive for adding buttons on click that show an alert on click
-myApp.directive("addmodules", function($compile){
-	return function(scope, element, attrs){
-		element.bind("click", function(){
-			angular.element(document.getElementById('section')).append($compile("<promo-s-directive moduledata='{{moduleData}}' /> ")(scope));
-		});
-	};
-});
-

@@ -1,24 +1,74 @@
-<div class="section-wrap col-2"> 
-        <div class="module promo promo1 desktop-fragments-promoM-group-1  module-first diagonal  dark   "> 
-         <a href="https://www.o2.co.uk/shop/phones/apple/iphone-6s/" title="Lorem ipsum" manual_cm_re="promoM-_-iPhone 6s-_-Buy now" target="_self"> 
-          <div class="module-body"> 
-           <div class="info"> 
-            <h3>Lorem ipsum</h3> 
-            <p>Promo-m module with dark and diagonal class</p> 
-            <p class="product-cta">Lorem ipsum</p> 
-           </div> 
-          </div> <span class="hover-down"></span><span class="hover-down"></span></a> 
-        </div> 
-        <div class="module promo promo2 desktop-fragments-promoM-group-1   module-last  dark  light-block "> 
-         <a href="https://www.o2.co.uk/shop/phones/samsung/galaxy-s7-edge/" title="Lorem ipsum" manual_cm_re="promoM-_-Samsung Galaxy S7 edge-_-Buy now" target="_self"> 
-          <div class="module-body"> 
-           <div class="info"> 
-            <h3>Lorem ipsum</h3> 
-            <p>Promo-m module with dark and whitebox class</p> 
-            <p class="product-cta">Lorem ipsum</p> 
-           </div> 
-          </div> <span class="hover-down"></span><span class="hover-down"></span></a> 
-        </div> 
-        
-        
-       </div>
+<div class="grid">  
+  <div class="" ng-repeat="moduleData in moduleData | filter:{name:'Promo M'}">
+
+  <div class="module label-xxl desktop-fragments-label-xxl-2" > 
+       <h2 >{{moduleData.name}}</h2> 
+       <div class="line"></div> 
+    </div>
+  
+  <div class="default-txt-container" ng-repeat="specs in moduleData.component.specification">
+    <p>{{specs.description}}</p>
+    <full-spec name="View Full Specifications"  />
+    <div class="fullSpecs" ng-bind-html="specs.full"></div>
+  </div>
+  
+</div>
+  
+<button addmodules  class="btn-primary add-module">Add Module</button><br /><br />
+
+
+<div class="section-wrap col-2" id="section"> 
+   
+
+  <promo-m-directive moduledata="{{moduleData}}" /> 
+</div>
+
+<div class="code-snippet">
+  <div class="module label-xxl desktop-fragments-label-xxl-2" > 
+         <h2 >Code Snippet</h2> 
+         <div class="line"></div> 
+      </div>
+
+
+<uib-tabset active="active">
+    <uib-tab index="0" heading="HTML">
+
+    <pre-code class="prettyprint"></pre-code>
+
+  </uib-tab>
+   
+    <uib-tab index="1" heading="CSS">
+  <pre><code>
+  /* Code Samples */
+  pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    background: #faf8f0;
+  }
+  #content #pre-stylish code {
+    display: block;
+    padding: 0.5em 1em;
+    border: 1px solid #bebab0;
+  }
+  </code></pre>
+    </uib-tab>
+  </uib-tabset>
+  
+
+  
+  
+
+  </div>
+
+  <div class="grid-row">
+    <div class="module label-xxl desktop-fragments-label-xxl-2" > 
+         <h2 >View the page in different breakpoints</h2> 
+         <div class="line"></div> 
+      </div>
+      <device-view></device-view>
+  </div> 
+</div>
+
+
+

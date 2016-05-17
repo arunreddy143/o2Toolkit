@@ -1,11 +1,10 @@
 
 var path = require('path');
-var qs = require('querystring');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var express = require('express');
 var logger = require('morgan');
-var app = express();
+var app = express(); 
 
 app.set('port', process.env.PORT || 3000);
 app.use(cors());

@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for promo-s\promo-s-directive.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">promo-s/</a> promo-s-directive.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/51</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">myApp.directive('promoSDirective', <span class="fstat-no" title="function not covered" >function($compile) {</span>
+<span class="cstat-no" title="statement not covered" >  return {</span>
+      restrict: 'AE',
+      replace: true,
+      scope:{moduledata:"@"},
+      template: `
+      &lt;div class="module-section" data-behavior="sample_code"&gt;
+      &lt;div class="module promo-s {{extraClass}}" &gt; 
+	&lt;div class="desktop-fragments-promoS-group-1 promo bkg-img"&gt;
+		&lt;div class="module-body"&gt;
+			&lt;div class="info"&gt; 
+				&lt;h3&gt;{{module.title}}&lt;/h3&gt; 
+				&lt;p&gt; {{module.copy}} &lt;/p&gt; 
+				&lt;p class="product-cta"&gt;{{module.cta}}&lt;/p&gt; 
+			&lt;/div&gt; 
+		&lt;/div&gt; 
+	&lt;span class="hover-down"&gt;&lt;/span&gt;
+	&lt;/div&gt; 
+&lt;/div&gt;&lt;/div&gt;`,
+		link: <span class="fstat-no" title="function not covered" >function ( $scope, element, attrs ) { </span>
+<span class="cstat-no" title="statement not covered" >			var moduleJson=JSON.parse($scope.moduledata);</span>
+<span class="cstat-no" title="statement not covered" >			angular.forEach(moduleJson, <span class="fstat-no" title="function not covered" >function(moduleVal, key) {				</span></span>
+<span class="cstat-no" title="statement not covered" >				if(moduleVal.name==="Promo S") {</span>
+<span class="cstat-no" title="statement not covered" >					$scope.moduleName=moduleVal.name;</span>
+<span class="cstat-no" title="statement not covered" >					$scope.master = moduleVal.component;</span>
+<span class="cstat-no" title="statement not covered" >					$scope.module=moduleVal.component;</span>
+<span class="cstat-no" title="statement not covered" >					angular.forEach($scope.module.extraClass, <span class="fstat-no" title="function not covered" >function(moduleExtraClass, key) {	</span></span>
+						
+<span class="cstat-no" title="statement not covered" >						if(moduleExtraClass.selected==="true") {</span>
+<span class="cstat-no" title="statement not covered" >							$scope.extraClass=moduleExtraClass.shade;</span>
+						}
+						
+					});
+				}
+			});
+			
+			
+			
+<span class="cstat-no" title="statement not covered" >			$scope.currentIndex;</span>
+<span class="cstat-no" title="statement not covered" >			element.bind('click', <span class="fstat-no" title="function not covered" >function(currentObj) {</span></span>
+<span class="cstat-no" title="statement not covered" >				$scope.currentIndex=$('.module-section').index(this);</span>
+<span class="cstat-no" title="statement not covered" >				var DOM = angular.element(`&lt;div class="modal"&gt;&lt;div class="modal-dialog"&gt;</span>
+				&lt;div class="modal-content" &gt;
+				&lt;form name="moduleForm"&gt;
+				&lt;div class="modal-header"&gt;
+				    &lt;h3 class="modal-title"&gt;{{moduleName}}&lt;/h3&gt;
+				&lt;/div&gt;
+				&lt;div class="modal-body"&gt;
+				    
+		    	&lt;div class="form-row"&gt;
+		    	&lt;label&gt;Title&lt;/label&gt;
+		    	&lt;textarea type="text" ng-model="module.title"&gt;&lt;/textarea&gt;
+		    	&lt;/div&gt;
+		    	&lt;div class="form-row"&gt;
+		    	&lt;label&gt;Copy&lt;/label&gt;
+		    	&lt;textarea type="text" value="${$scope.copy}}" ng-model="module.copy"&gt;&lt;/textarea&gt;
+		    	&lt;/div&gt;
+		    	&lt;div class="form-row"&gt;
+		    	&lt;label&gt;CTA Link&lt;/label&gt;
+		    	&lt;textarea type="text" value="${$scope.cta}}" ng-model="module.cta"&gt;&lt;/textarea&gt;
+		    	&lt;/div&gt;
+		    	&lt;div class="form-row"&gt;
+		    	&lt;label&gt;Extra Classes&lt;/label&gt;
+		    	&lt;select ng-model="extraClass"
+          ng-options="module.shade as module.shade for module in module.extraClass"&gt;
+    &lt;/select&gt;&lt;/div&gt;
+		    	&lt;div class="form-row"&gt;
+		    	&lt;label&gt;DD(Mobile)&lt;/label&gt;
+		    	&lt;input type="file" name="image" accept="image/*" fileread="module.mobile"&gt;
+		    	&lt;/div&gt;
+		    	&lt;div class="form-row"&gt;
+		    	&lt;label&gt;Bp2 (Tablet)&lt;/label&gt;
+		    	&lt;input type="file" name="image" accept="image/*" fileread="module.tablet"&gt;
+		    	&lt;/div&gt;
+		    	&lt;div class="form-row"&gt;
+		    	&lt;label&gt;Bp3 (Desktop)&lt;/label&gt;
+		    	&lt;input type="file" name="image" accept="image/*" fileread="module.desktop"&gt;
+		    	&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class="modal-footer"&gt;
+				    &lt;button class="btn btn-primary btn-primary" type="button" ng-click="ok(module,currentIndex)"&gt;OK&lt;/button&gt;
+				    &lt;button class="btn btn-warning" type="button" ng-click="cancel()"&gt;Cancel&lt;/button&gt;
+				&lt;/div&gt;
+				&lt;/form&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;&lt;/div&gt;`);
+<span class="cstat-no" title="statement not covered" >			$compile(DOM)($scope);</span>
+<span class="cstat-no" title="statement not covered" >				$( "body" ).find('.modal').remove();				</span>
+<span class="cstat-no" title="statement not covered" >	         	$( DOM).appendTo( $( "body" ) );</span>
+<span class="cstat-no" title="statement not covered" >	         	$( '.modal').addClass('fade in').css({"z-index": 1050,   "display": "block"});</span>
+&nbsp;
+	        });
+<span class="cstat-no" title="statement not covered" >	        $scope.ok=<span class="fstat-no" title="function not covered" >function(module,currentIndex) {	 </span></span>
+<span class="cstat-no" title="statement not covered" >	        	var bgApply=$('.module-section').eq($scope.currentIndex).find('.bkg-img');</span>
+<span class="cstat-no" title="statement not covered" >	        	var responsiveImg=<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >	        	if(angular.element(window).width()&lt;575) {</span>
+<span class="cstat-no" title="statement not covered" >	        		$(bgApply).css( 'background-image',"url('" + module.mobile + "')"); </span>
+	        	}
+<span class="cstat-no" title="statement not covered" >	        	if(angular.element(window).width()&gt;=575 &amp;&amp; angular.element(window).width()&lt;=815) {</span>
+<span class="cstat-no" title="statement not covered" >	        		$(bgApply).css( 'background-image',"url('" + module.tablet + "')");  </span>
+	        	}
+<span class="cstat-no" title="statement not covered" >	        	if(angular.element(window).width()&gt;=815) {</span>
+<span class="cstat-no" title="statement not covered" >	        		$(bgApply).css( 'background-image',"url('" + module.desktop + "')");</span>
+	        	}
+<span class="cstat-no" title="statement not covered" >	        	$scope.master = angular.copy($scope.module);</span>
+	        }
+<span class="cstat-no" title="statement not covered" >        	responsiveImg();</span>
+<span class="cstat-no" title="statement not covered" >        	removeModal(currentIndex);</span>
+<span class="cstat-no" title="statement not covered" >        	$(window).on("resize", <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >	        	responsiveImg();</span>
+	        });     	
+	        	
+	        	
+	        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	        $scope.cancel=<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >	        	console.log('cancel')</span>
+<span class="cstat-no" title="statement not covered" >	        	removeModal();</span>
+<span class="cstat-no" title="statement not covered" >	        	$scope.module = angular.copy($scope.master);</span>
+	        }
+<span class="cstat-no" title="statement not covered" >	        var removeModal=<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >	        	$( '.modal').remove();</span>
+&nbsp;
+	        };
+	        
+	        
+		}
+  	};
+}); 
+&nbsp;
+&nbsp;
+myApp.directive("fileread", [<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        scope: {
+            fileread: "="
+        },
+        link: <span class="fstat-no" title="function not covered" >function (scope, element, attributes) {</span>
+<span class="cstat-no" title="statement not covered" >            element.bind("change", <span class="fstat-no" title="function not covered" >function (changeEvent) {</span></span>
+<span class="cstat-no" title="statement not covered" >                var reader = new FileReader();</span>
+<span class="cstat-no" title="statement not covered" >                reader.onload = <span class="fstat-no" title="function not covered" >function (loadEvent) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    scope.$apply(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                        scope.fileread = loadEvent.target.result;</span>
+                    });
+                }
+<span class="cstat-no" title="statement not covered" >                reader.readAsDataURL(changeEvent.target.files[0]);</span>
+            });
+        }
+    }
+}]);
+&nbsp;
+&nbsp;
+//Directive for adding buttons on click that show an alert on click
+myApp.directive("addmodules", <span class="fstat-no" title="function not covered" >function($compile){</span>
+<span class="cstat-no" title="statement not covered" >	return <span class="fstat-no" title="function not covered" >function(scope, element, attrs){</span></span>
+<span class="cstat-no" title="statement not covered" >		element.bind("click", <span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >			angular.element(document.getElementById('section')).append($compile("&lt;promo-s-directive moduledata='{{moduleData}}' /&gt; ")(scope));</span>
+		});
+	};
+});
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue May 17 2016 15:36:08 GMT+0100 (GMT Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

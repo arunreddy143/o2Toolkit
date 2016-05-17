@@ -29,7 +29,6 @@ gulp.task('clean', function() {
 
 // Styles
 gulp.task('sass', function() {  
-
     return gulp.src(['dev/modules/**/*.scss'])
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('build/assets/css/'))
@@ -37,11 +36,7 @@ gulp.task('sass', function() {
     .pipe(minifyCSS())
     .pipe(rename('all-modules.min.css'))
     .pipe(gulp.dest('build/assets/css'))
-    
-    
-
-    .pipe(notify({ message: 'Styles task complete' }))
-    
+    .pipe(notify({ message: 'Styles task complete' }));    
 });
 
 
@@ -74,19 +69,14 @@ gulp.task('copyFiles', function() {
     .pipe(concat('all.js'))
     .pipe(gulp.dest('build/assets/js/'))
 
-    .pipe(livereload())
+    
 
     .pipe(notify({ message: 'All files task complete' }));  
 
 });
 
 
-
-// Watch
-gulp.task('watch', function() {
-  // Watch .scss files
-  gulp.watch(['dev/assets/css/**','dev/modules/**/**.scss','dev/modules/**/.js','dev/assets/js/*'], ['sass','copyFiles']);
-
+gulp.task('server', function(){
   nodemon({
     // the script to run the app
     script: 'server.js',
@@ -94,18 +84,31 @@ gulp.task('watch', function() {
   }).on('restart', function(){ 
     // when the app has restarted, run livereload.
     gulp.src('server.js')
-      
-
-  })
+});
 
 });
 
 
+gulp.task('watch', function() {
+  gulp.watch(['dev/assets/css/**','dev/modules/**/**.scss','dev/modules/**/*.js','dev/assets/js/*'], ['sass','copyFiles']);
+ 
+});
 
+/*default gulp task
+    1) cmd--> type gulp
+    2) it watches all file changes and recompiles where ever required
+*/
 
-gulp.task('default', function(callback) {
-  runSequence('clean',
-              ['sass','copyFiles','watch'])
+gulp.task('default', function() {  
+  runSequence('clean', ['sass','copyFiles','server','watch']);  
+});
+
+/*production gulp task
+    1) cmd--> type gulp prod
+    2) This is production deployment
+*/
+gulp.task('prod', function() {
+  runSequence('clean', ['sass','copyFiles'])
 });
 
 
