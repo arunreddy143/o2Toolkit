@@ -1,0 +1,408 @@
+@import "dev/assets/scss/_libraries/common";
+
+
+$toolbar-button-line-height: 18px;
+$primary-nav-grad-start-color: #fafafa;
+$primary-nav-grad-end-color: #f4f4f4;
+
+$dropdownZindex: 1000;
+$dropdownBackgroundColor: #f3f4f6;
+$dropdownBackgroundActiveColor: #e6e6e6;
+$dropdownBorderColor: #ddd;
+$dropdownFontSize: 0.875em;
+$dropdownBaseLineHeight: 1em;
+$dropdownLinkColor: $colorBlueDark;
+$dropdownLinkActiveColor: $colorBlueLight;
+$dropdownLinkDisabledColor: #aaa;
+$dropdownLinkColorHover: $colorBlueLight;
+$locationbarBackgroundColor: #e6e6e6;
+
+@include placeholder {
+  color: $colorWhite;
+  opacity: 1;
+}
+
+.js .tools {
+  display: none;
+} // stop fouc of cookie check and show again in js after check is done
+
+#header-consumer {
+  font-family: Frutiger55, sans-serif;
+  @include font-size(16);
+  position: relative;
+  z-index:1000;
+  .hideWhenSignedOut span {
+    display: none;
+  }
+  #header-tool-search{
+    display:none;
+  }
+  .is-desktop{
+    display:none;
+  }
+  .toolbar{
+      @include background-linear-gradient($navToolbarGradStart, $navToolbarGradEnd, url('../img/modules/toolbar-grad-bkg.png'));
+    width:100%;
+    height:33px;
+
+
+          margin: 0;
+      padding: 0;
+
+      color: $colorWhite;
+      overflow: hidden;
+    //.header-tool-search{
+    //  display: none;
+    //}
+    a{
+        color: $colorWhite;
+      }
+    form.header-tool-search{
+        display: inline;
+        float:right;
+        overflow: hidden;
+        height: auto;
+        width: auto;
+        margin: 5px 8px 5px 0;
+        padding: 0;
+        @include border-radius(5px);
+        @include background-linear-gradient($formSubmitButtonStart, $formSubmitButtonEnd);
+        border: 0px solid $colorInputBorder;
+        /*position: absolute;
+        right: 12px;*/
+        label {
+          display:none;
+        }
+        input{
+          float: left;
+          margin: 0;
+          padding: 0;
+          border: 0px solid;
+          height: 19px;
+          font-size: 0.813em;
+          color: $colorBlack;
+          &:focus{
+            outline: none;
+          }
+        }
+        input[type="text"]{
+          width: 72px;
+          padding: 2px 5px;
+          -webkit-transition: width 0.5s ease;
+          -moz-transition: width 0.5s ease;
+          -o-transition: width 0.5s ease;
+          -ms-transition: width 0.5s ease;
+          transition: width 0.5s ease;
+          &.placeholder {
+            color: $colorInputPlaceholderText;
+          }
+          @include parent-placeholder {
+            color: $colorInputPlaceholderText;
+          }
+          &:focus {
+            width:86px;
+            background-color: $colorWhite;
+            box-shadow:0 0 2px 3px $colorBlueLight inset;
+          }
+        }
+        input[type="submit"]{
+          width: 36px;
+          background: transparent url('../img/nav/tool-icon-search-sprite.png') 50% -3px no-repeat;
+          &:focus {
+            box-shadow:0 0 3px 1px $colorWhite inset; 
+            height:23px
+          }
+        }
+      }
+  }
+
+  ul.tools{
+        float: left;
+        text-align: right;
+        height: 22px;
+        line-height: 1.125em;
+        margin: 11px 10px 0 0;
+        font-size: 0.688em;
+
+        li{
+          display: none;
+          float: left;
+          margin: 0;
+          overflow: hidden;
+          padding: 0 6px 0 20px;
+          vertical-align: middle;
+          height: auto;
+          width:auto;
+          background-color: transparent;
+          background-repeat: no-repeat;
+          background-position: 0 50%;
+          &.pipe{
+           padding:0;
+          }
+          a{
+            color: $colorWhite;
+            padding: 0;
+            background-color: transparent;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          &#header-tool-basket{
+            background-image: url(../img/nav/tool-icon-basket.png);
+          }
+          &#header-tool-webchat{
+            display: none;
+            background-image: url(../img/nav/tool-icon-webchat.png);
+          }
+          &#header-tool-storelocator{
+            display: none;
+            background-image: url(../img/nav/tool-icon-storelocator.png);
+            text-indent: 100px;
+            position:absolute;
+            left: 50%;
+            margin-left: -16px;
+            padding:0px;
+            background-position:50%;
+            a {
+              display: block;
+              width: 16px;
+              padding:0 8px;
+            }
+          }
+          &#header-tool-signin{
+            //background-image: url(../img/nav/tool-icon-signin.png);
+            background-image: none;
+            display: block;
+            .welcome{
+             display:block;
+             float:left;
+
+            }
+          }
+          a{
+            height:12px;
+          }
+          &#header-tool-signin{
+            div{
+              float:left;
+            }
+            .signInLink{
+              padding-right:6px;
+            }
+            .welcome{
+              display: none;
+              padding-right:5px;
+            }
+          }
+        }
+
+      }
+  ul.site-switch{
+    display:none;
+  }
+  #header-tool-signin{
+    .welcome{
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+
+@media screen and (min-width: $breakpoint2) {
+  #header-consumer{
+    .hideWhenSignedOut span {
+      display: inline-block;
+      padding-right:3px;
+    }
+    font-family: Frutiger55, sans-serif;
+    font-size: 16px;
+    .is-mobile{
+      display:none;
+    }
+    a{
+      text-decoration: none;
+    }
+    ul{
+      margin: 0;
+      padding: 0;
+      li{
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .toolbar{
+      @include background-linear-gradient($navToolbarGradStart, $navToolbarGradEnd, url('../img/modules/toolbar-grad-bkg.png'));
+
+
+      ul{
+        float: left;
+        li{
+          float: left;
+        }
+      }
+      .grid-inner{
+        position: relative;
+      }
+      ul.site-switch {
+        display: block;
+        font-size: 0.813em;
+        margin: 0;
+        position: relative;
+        left: 0;
+        height:33px;
+        line-height: 33px;
+        width: 162px;
+        background: transparent url('../img/modules/toolbar-sitetabs.png') 0 0 no-repeat;
+        li{
+          margin: 0;
+          width: 69px;
+          padding:  0 0 0 12px;
+          &.current{
+            width: 65px;
+            padding: 0 0 0 16px;
+            color:$colorBlueDark;
+          }
+        }
+        &.business{
+          background: transparent url('../img/modules/toolbar-sitetabs-business.png') 0 0 no-repeat;
+          li{
+          margin: 0;
+          width: 69px;
+          padding:  0 0 0 16px;
+            &.current{
+              width: 65px;
+              padding: 0 0 0 9px;
+              color:$colorBlueDark;
+            }
+          }
+        }
+      }
+
+      ul.tools{
+        float: right; 
+        li {
+          padding:0 3px;
+          &#header-tool-basket{
+            display: block;
+            background-image: none;
+          }
+          &#header-tool-webchat{
+            display: none;
+            background-image: none;
+          }
+          &#header-tool-storelocator{
+            display: block;
+            text-indent: 0px;
+            position:relative;
+            left:0;
+            margin-left: 0px;
+            background-position:0;
+            background-image:none;
+            a {
+              display: inline;
+              width: auto;
+              padding:0 3px;
+            }
+          }
+          &#header-tool-signin{
+            background-image: none;
+          }
+          &.pipe{
+           display:block;
+          }
+        }
+      }
+    }
+
+    #header-tool-webchat{
+      display: none;
+      background-image: none;
+    }
+    #header-tool-storelocator{
+      background-image: none;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint3) {
+  #header-consumer{
+    a:focus {
+        outline:solid 2px $colorBlueLight;
+        z-index:1;
+        position: relative;
+    }
+    .toolbar{
+      ul.tools{
+        li{
+          padding:0 6px 0 20px;
+          height:auto;
+          overflow:visible;
+          &#header-tool-basket{
+            background-image: url(../img/nav/tool-icon-basket.png);
+          }
+          &#header-tool-webchat{
+            display: none;
+            background-image: url(../img/nav/tool-icon-webchat.png);
+          }
+          &#header-tool-storelocator{
+            background-image: url(../img/nav/tool-icon-storelocator.png);
+            padding:0 3px 0 16px;
+          }
+          &#header-tool-signin{
+            background-image: url(../img/nav/tool-icon-signin.png);
+            padding-left:16px;
+            .welcome{
+             display:block;
+             float:left;
+
+            }
+          }
+          &.pipe{
+           display:none;
+          }
+          a{
+            height:12px;
+          }
+        }
+      }
+      ul.site-switch{
+        margin: 0 0 0 76px;
+        a:focus {
+          outline-color:$colorWhite;
+        }
+      }
+      form.header-tool-search {
+        input[type="text"]{
+          width: 112px;
+        }
+        input[type="text"]:focus {
+          width:152px;
+          @include parent-placeholder {
+            color: $colorBlueLight;
+          }
+        }
+      }
+    }
+  }
+
+}
+@media screen and (min-width: $breakpoint4) {
+  #header-consumer{
+    .toolbar{
+      ul.tools{
+        li{
+          a{
+          }
+        }
+      }
+      ul.site-switch{
+        margin: 0 0 0 93px;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,213 @@
+@import "dev/assets/scss/_libraries/common";
+
+.no-js #findphone form, .no-js #select-language form { display:none; }
+.no-js .header-dropdown-xxl option {display:none;}
+
+
+.header-search-xxl,.header-dropdown-xxl{
+  background-color: $colorBlueDarker;
+  background-repeat:  no-repeat;  
+  background-position:  top right;
+  background-image: url($assetPathShared + '/img/modules/header-search-xxl-diagonal-small-575.png');  
+  width: 100%;
+  height: 160px; 
+  overflow: hidden;
+  
+  .module-body{
+    width: 95%;
+    float:left;
+    display: block;
+    padding: 20px;
+    margin: 0;
+    .info {
+      float: left;
+      width:100%;
+      h1 {
+        color: $colorWhite;
+        width: auto;
+        margin: 0 0 7px 0;
+        font-size: 1.500em;
+      }
+      p {
+        font-family: $frutiger46Italic;
+        display:none;
+        color: $colorWhite;
+      }
+    }
+    form{
+      float: left;
+      margin: 20px 0 0 0;
+      label{
+        color: $colorWhite;
+      }
+      .fieldandsubmitbar{
+        @include background-linear-gradient($formSubmitButtonStart, $formSubmitButtonEnd);
+        @include border-radius();
+        padding: 0;
+        margin: 8px 0 0 0;
+        width: 280px;
+        height:auto;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      span.select {
+        display: block;
+        width: 100%;
+      }
+
+      select:focus {
+        border:1px solid #FFF;
+      }
+      
+      input{
+        border: none;
+        padding: 5px 10px;
+        margin: 0;
+        height: 30px;
+        float:left;
+        &[type="text"]{
+          background-color: $colorWhite;
+          color: $colorBlueDark;
+          @include multi-border-radius(5px, 0, 0, 5px);
+          font-size:0.875em;
+          width: 200px;
+          &::-webkit-input-placeholder, &.placeholder {
+            color: $colorInputPlaceholderText;
+          }
+          &:-moz-placeholder { /* Firefox 18- */
+            color: $colorInputPlaceholderText;
+          }
+          &::-moz-placeholder {  /* Firefox 19+ */
+            color: $colorInputPlaceholderText;  
+          }
+          &:-ms-input-placeholder {  
+            color: $colorInputPlaceholderText;
+          }
+        }
+        &[type="submit"]{
+          color: $colorWhite;
+          @include multi-border-radius(0, 5px, 5px, 0);
+          background: transparent url($assetPathShared + '/img/nav/tool-icon-search-sprite.png') 50% -25px no-repeat;
+          padding: 0;
+          height: 40px;
+          width: 60px;
+        }
+      }
+    }
+  }
+}
+
+
+ @media screen and (min-width: $breakpoint2) {
+  
+  .header-search-xxl,.header-dropdown-xxl{
+    background-image: url($assetPathShared + '/img/modules/header-search-xxl-diagonal-medium-815.png'); 
+    height: 200px;
+    .module-body{
+      width: 100%;
+      padding: 30px 20px;
+      .info{
+        p{
+          font-size: 1.00em;
+          display: block;
+        }
+        h1{
+          font-size: 1.875em;
+        }
+      }
+      form{
+        margin: 20px 0 0 0;
+        label{
+        }
+        .fieldandsubmitbar{
+          width: 326px;
+        }
+        input{
+          &[type="text"]{
+            width: 256px;
+          }
+          &[type="submit"]{
+            width: 50px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint3) {
+  
+  .header-search-xxl,.header-dropdown-xxl{
+    background-position: top right;
+    height: 130px;
+    background: url($assetPathWWW + '/img/general/header-xxl-grad-1px-repeat.jpg') 0 0 repeat-x; 
+	.header-search-xxl-diag{
+		background:url($assetPathShared + '/img/modules/headersearch-xxl-diagonal_2000.png') right top no-repeat; 
+		margin:0 auto;
+    	height: 130px;
+	}
+    .module-body{
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      .info{
+        width: 50%;
+        padding: 30px 0 0 30px;
+        p{
+          font-size: 1.125em;
+          display: block;
+        }
+        h1{
+          font-size: 2.875em;
+        }
+      }
+      form{
+        margin: 0;
+        float: right;
+        padding: 30px 30px 30px 0;
+        label{
+        }
+        .fieldandsubmitbar{
+        }
+        input{
+          &[type="text"]{
+          }
+          &[type="submit"]{
+          }
+        }
+      }
+    }
+  }
+}
+
+.header-search-xxl-results {
+  background:#FFF;
+  position: absolute;
+  max-height: 144px;
+  overflow: auto;
+  display:none;
+  -webkit-overflow-scrolling:touch;
+  a {
+    border:1px solid $colorGrey9;
+    border-top:0px;
+    display: block;
+    padding:0px 10px;
+    line-height:31px;
+    height:31px;
+    color: $colorBlueDark;
+    @include font-size(12);
+  }
+  a:hover, .active {
+    background:$colorGrey9;
+  }
+  &.border4 { border-bottom:1px solid $colorGrey9; }
+}
+
+ @media screen and (min-width: $breakpoint2) {
+  .header-search-xxl-results {
+    a {
+      @include font-size(13);
+    }
+  }
+}

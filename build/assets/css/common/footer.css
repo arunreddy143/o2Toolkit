@@ -1,0 +1,188 @@
+#o2-footer {
+  font-family: Frutiger55, sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1em;
+  clear: both;
+  color: #ffffff;
+  display: block;
+  background: #449ed0 url("../assets/img/footer-gradient-mobile.png") 0 0 repeat-x;
+  background-size: 100% 100%; }
+  #o2-footer iframe {
+    margin-top: -1px;
+    border: 0px; }
+  #o2-footer p {
+    margin: 0; }
+  #o2-footer a, #o2-footer a:hover, #o2-footer a:visited, #o2-footer a:active {
+    color: #e3e3e3 !important;
+    text-decoration: none; }
+  #o2-footer a:hover {
+    text-decoration: underline; }
+  #o2-footer .grid-inner {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 30px 0 0; }
+  #o2-footer ul {
+    float: left;
+    padding: 0; }
+    #o2-footer ul li {
+      display: inline-block;
+      float: left;
+      line-height: 1.5em;
+      color: #ffffff;
+      margin: 0 6px 0 0; }
+      #o2-footer ul li.last {
+        background-image: none; }
+      #o2-footer ul li a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 5px 0 0; }
+  #o2-footer p {
+    color: #fff;
+    line-height: 1em;
+    display: inline-block; }
+  #o2-footer .nav.full-nav {
+    display: none; }
+  #o2-footer .nav.mobile-nav ul {
+    float: left;
+    width: 100%;
+    margin: 0 0 13px; }
+    #o2-footer .nav.mobile-nav ul li {
+      font-size: 0.75em; }
+      #o2-footer .nav.mobile-nav ul li span {
+        padding: 0 10px;
+        opacity: 0.6; }
+  #o2-footer .nav .social {
+    border-top: 1px solid #3c6b99;
+    border-bottom: 1px solid #3d7eb1;
+    height: 15px;
+    padding: 12px 0 14px; }
+    #o2-footer .nav .social li {
+      display: inline-block;
+      float: left;
+      line-height: 1em; }
+      #o2-footer .nav .social li.facebook a {
+        background-position: 0 -33px; }
+      #o2-footer .nav .social li.linkedin a {
+        background-position: 0 -99px; }
+      #o2-footer .nav .social li.o2businessBlog a {
+        background: url("../img/footer/footer-sprite-blog-icon.png") left top no-repeat;
+        background-position: 0 0; }
+      #o2-footer .nav .social li a {
+        background: url("../assets/img/footer-sprite-social-icons.png") left top no-repeat;
+        color: #ffffff;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0 13px 0 0;
+        padding: 2px 0 3px 27px; }
+        #o2-footer .nav .social li a:hover {
+          text-decoration: underline; }
+  #o2-footer #o2-footer-secondary {
+    font-size: 0.625em; }
+    #o2-footer #o2-footer-secondary ul {
+      margin: 0 20px 0 0; }
+      #o2-footer #o2-footer-secondary ul li span {
+        padding: 0 7px;
+        opacity: 0.6; }
+    #o2-footer #o2-footer-secondary .telefonica-footerLegal {
+      width: 100%;
+      display: inline-block;
+      padding: 10px 0 20px; }
+    #o2-footer #o2-footer-secondary .telefonica-links {
+      width: 100%;
+      display: inline-block;
+      padding: 27px 0 10px; }
+      #o2-footer #o2-footer-secondary .telefonica-links p {
+        float: left; }
+      #o2-footer #o2-footer-secondary .telefonica-links a {
+        padding: 0 4px; }
+        #o2-footer #o2-footer-secondary .telefonica-links a:first-child {
+          padding-left: 0; }
+      #o2-footer #o2-footer-secondary .telefonica-links .telefonica-logo {
+        float: right;
+        background: url("../img/sprite-logo-telefonica.png") 0 -22px no-repeat;
+        text-indent: -9999px;
+        width: 58px;
+        height: 22px;
+        top: -4px;
+        position: relative; }
+
+@media screen and (min-width: 575px) {
+  #o2-footer a:focus {
+    outline: 0 none;
+    outline: solid 2px #ffffff;
+    text-decoration: underline; }
+  #o2-footer .grid-inner {
+    background: url("../assets/img/footer-bubbles.png") right bottom no-repeat;
+    margin: 0 auto;
+    padding: 30px 0; }
+    #o2-footer .grid-inner .nav.mobile-nav {
+      display: none; }
+    #o2-footer .grid-inner .nav.full-nav {
+      display: block;
+      width: 100%;
+      overflow: hidden; }
+      #o2-footer .grid-inner .nav.full-nav dl {
+        width: 25%;
+        margin: 0;
+        float: left;
+        min-height: 165px;
+        background: url("../img/footer/footer-list-splitter.png") 100% top no-repeat; }
+        #o2-footer .grid-inner .nav.full-nav dl.last {
+          background-image: none; }
+        #o2-footer .grid-inner .nav.full-nav dl dt {
+          font-family: Frutiger45Light, sans-serif;
+          font-size: 1.25em;
+          line-height: 1em;
+          color: #ffffff;
+          margin: 0 0 20px 30px;
+          opacity: 0.6; }
+        #o2-footer .grid-inner .nav.full-nav dl dd {
+          font-size: 0.75em;
+          margin: 0 0 0 30px;
+          padding-bottom: 8px;
+          line-height: 1em; }
+          #o2-footer .grid-inner .nav.full-nav dl dd.social {
+            border: none;
+            height: 15px;
+            padding: 3px 0 0 25px;
+            margin-bottom: 10px;
+            background: url("../assets/img/footer-sprite-social-icons.png") left top no-repeat; }
+            #o2-footer .grid-inner .nav.full-nav dl dd.social.twitter {
+              background-position: 0 0; }
+            #o2-footer .grid-inner .nav.full-nav dl dd.social.facebook {
+              background-position: 0 -33px; }
+            #o2-footer .grid-inner .nav.full-nav dl dd.social.blog {
+              background-position: 0 -66px; }
+            #o2-footer .grid-inner .nav.full-nav dl dd.social.linkedin {
+              background-position: 0 -99px; }
+            #o2-footer .grid-inner .nav.full-nav dl dd.social.slideshare {
+              background-position: 0 -132px; }
+            #o2-footer .grid-inner .nav.full-nav dl dd.social.youtube {
+              background-position: 0 -165px; }
+            #o2-footer .grid-inner .nav.full-nav dl dd.social.o2businessBlog {
+              background: url("../img/footer/footer-sprite-blog-icon.png") left top no-repeat;
+              background-position: 0 0; }
+  #o2-footer #o2-footer-secondary {
+    clear: both;
+    padding: 50px 20px 0;
+    font-size: 0.75em; }
+    #o2-footer #o2-footer-secondary ul {
+      display: block;
+      float: left;
+      width: auto; }
+    #o2-footer #o2-footer-secondary .telefonica-footerLegal {
+      padding: 0;
+      width: auto;
+      margin-top: 21px; }
+    #o2-footer #o2-footer-secondary .telefonica-links {
+      float: left;
+      line-height: 1.5em;
+      padding: 0;
+      width: auto;
+      margin: 0;
+      opacity: 0.6; }
+      #o2-footer #o2-footer-secondary .telefonica-links .telefonica-logo {
+        display: none; }
+      #o2-footer #o2-footer-secondary .telefonica-links p {
+        line-height: 1.5em; } }

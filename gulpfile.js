@@ -85,7 +85,7 @@ gulp.task('copyFiles', function() {
 // Watch
 gulp.task('watch', function() {
   // Watch .scss files
-  gulp.watch(['dev/assets/css/**','dev/assets/scss/**/**.scss','dev/modules/**/.js','dev/assets/js/*'], ['sass','copyFiles']);
+  gulp.watch(['dev/assets/css/**','dev/modules/**/**.scss','dev/modules/**/.js','dev/assets/js/*'], ['sass','copyFiles']);
 
   nodemon({
     // the script to run the app

@@ -1,0 +1,32 @@
+.label-xxl {
+  width: 100%;
+  position: relative;
+  background: transparent url("//static.preview1s.o2.co.uk/shared/img/label-xxl-shadow575.png") 0 0 no-repeat; }
+  .label-xxl h2 {
+    padding: 22px 0 22px 20px;
+    color: #032b5a;
+    width: 95%;
+    font-size: 1.250em;
+    line-height: 1.250em;
+    margin: 0; }
+  .label-xxl .line {
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background: transparent url("//static.preview1s.o2.co.uk/shared/img/label-xxl-line575.png") 0 0 no-repeat; }
+
+@media screen and (min-width: 575px) {
+  .label-xxl {
+    background: transparent url("//static.preview1s.o2.co.uk/shared/img/label-xxl-shadow575.png") 0 0 no-repeat; }
+    .label-xxl h2 {
+      padding: 12px 0 10px 20px; } }
+
+@media screen and (min-width: 815px) {
+  .label-xxl {
+    background: transparent url("//static.preview1s.o2.co.uk/shared/img/label-xxl-shadow1100.png") 0 0 no-repeat; }
+    .label-xxl h2 {
+      padding: 18px 0 16px 30px; }
+    .label-xxl .line {
+      background-image: url("//static.preview1s.o2.co.uk/shared/img/label-xxl-line1100.png"); } }

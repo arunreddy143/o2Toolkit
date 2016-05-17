@@ -1,0 +1,258 @@
+@import "dev/assets/scss/_libraries/common";
+
+#o2-footer {
+  font-family: Frutiger55, sans-serif;
+  @include font-size(16);
+  line-height:1em;
+  clear: both;
+  color: $colorWhite; 
+  display:block;
+  background: $colorBlue2 url('..' + $footerGradientMobile) 0 0 repeat-x;
+  background-size: 100% 100%;
+  iframe {
+    margin-top: -1px;
+    border:0px;
+  }
+  p{
+    margin: 0;
+  }
+  a, a:hover, a:visited, a:active {
+    color:#e3e3e3 !important;
+    text-decoration: none;  
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .grid-inner {
+    margin-left:20px;
+    margin-right:20px;
+    padding: 30px 0 0;
+  }
+  ul { 
+    float: left;
+    padding:0;
+    li { 
+      display: inline-block;
+      float:left;
+      line-height:1.5em; 
+      color: $colorWhite;
+      margin: 0 6px 0 0;
+      &.last{
+        background-image:none;
+      }
+      a {        
+        color:$colorWhite;
+        text-decoration: none; 
+        margin: 0 5px 0 0;
+      }    
+    }
+  }
+  p { 
+    color: #fff;
+    line-height:1em;
+    display: inline-block;
+  }
+  .nav {
+    &.full-nav {
+      display: none;
+    }
+    &.mobile-nav {
+      ul {
+        float:left;
+        width: 100%;
+        margin: 0 0 13px;
+        li {
+          font-size: 0.75em;
+          span {
+            padding:0 10px;
+            opacity:0.6;
+          }
+        }
+      }
+    }
+    .social {
+      border-top: 1px solid #3c6b99;
+      border-bottom: 1px solid #3d7eb1;
+      height:15px;      
+      padding:12px 0 14px; 
+      li {
+        display: inline-block;
+        float:left;
+        line-height: 1em;
+        
+        &.facebook a {
+          background-position: 0 -33px;
+        }
+        &.linkedin a {
+          background-position: 0 -99px;
+        }
+        &.o2businessBlog a{
+          background: url('..' + $footerO2BussinessBlog) left top no-repeat;
+          background-position: 0 0;
+        }
+        a {
+          background: url('..' + $footerSocialSprite) left top no-repeat;
+          color:$colorWhite;
+          text-decoration: none;
+          display:inline-block;
+          margin:0 13px 0 0;
+          padding: 2px 0 3px 27px;
+          &:hover{
+            text-decoration:underline;
+          }
+        }
+      }
+    }
+  }
+
+  #o2-footer-secondary {
+    font-size: 0.625em;
+    ul{
+      margin: 0 20px 0 0;
+      li {
+      span {
+        padding:0 7px;
+        opacity:0.6;
+       }
+      }
+    }
+    .telefonica-footerLegal {
+      width: 100%;
+      display: inline-block;
+      padding: 10px 0 20px;
+    }
+    .telefonica-links {
+      width: 100%;
+      display: inline-block;
+      padding: 27px 0 10px;
+      p {
+        float:left;
+      }
+      a {
+        padding: 0 4px;
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+      .telefonica-logo {
+        float:right;
+        background: url('..' + $TelefonicaLogo) 0 -22px no-repeat;
+        text-indent: -9999px;
+        width: 58px;
+        height:22px;
+        top:-4px;
+        position:relative;
+      }
+    }
+  }
+}
+
+
+// @media screen and (min-width: 575px) {
+@media screen and (min-width: $breakpoint2) { 
+  #o2-footer {
+    
+    a:focus {
+      outline:0 none;         
+      outline:solid 2px $colorWhite;
+      text-decoration:underline;
+    }
+    .grid-inner {
+      background: url('..' + $footerBubble) right bottom no-repeat;
+      margin: 0 auto;
+      padding: 30px 0;
+      .nav {
+        &.mobile-nav {
+          display: none;
+        }
+        &.full-nav {
+          display: block;
+          width: 100%;
+          overflow:hidden;
+          dl {
+            width: 25%;
+            margin: 0;            
+            float: left;
+            min-height:165px;
+            background: url('..' + $footerListSplitter) 100% top no-repeat;
+              &.last{
+                background-image:none;
+              }
+            dt {
+              font-family: Frutiger45Light, sans-serif;
+              font-size: 1.25em;
+              line-height:1em;
+              color: $colorWhite;
+              margin: 0 0 20px 30px; 
+              opacity: 0.6;  
+            }
+            dd {
+              font-size:0.75em;
+              margin: 0 0 0 30px;
+              padding-bottom:8px;
+              line-height:1em;
+              &.social {
+                border: none;
+                height:15px;
+                padding:3px 0 0 25px;
+                margin-bottom:10px;
+                background: url('..' + $footerSocialSprite) left top no-repeat;
+                &.twitter{
+                  background-position: 0 0;
+                }
+                &.facebook{
+                  background-position: 0 -33px;
+                }
+                &.blog{
+                  background-position: 0 -66px;
+                }
+                &.linkedin{
+                  background-position: 0 -99px;
+                }
+                &.slideshare{
+                  background-position: 0 -132px;
+                }
+                &.youtube{
+                  background-position: 0 -165px;
+                }
+                &.o2businessBlog{
+                  background: url('..' + $footerO2BussinessBlog) left top no-repeat;
+                  background-position: 0 0;
+                }  
+              }
+            }     
+          }
+        }
+      }
+    }
+    #o2-footer-secondary {
+      clear:both;
+      padding: 50px 20px 0;
+      font-size:0.75em;
+      ul{
+        display:block;
+        float:left;
+        width:auto;
+      }
+      .telefonica-footerLegal{
+          padding:0;
+          width: auto;
+          margin-top: 21px;
+        }
+      .telefonica-links {
+          float:left;
+          line-height:1.5em;
+          padding:0;
+          width: auto;
+          margin: 0;
+          opacity: 0.6;
+            .telefonica-logo{
+              display:none;
+            }
+             p {
+              line-height : 1.5em;
+            }
+        }
+    } 
+  }
+}

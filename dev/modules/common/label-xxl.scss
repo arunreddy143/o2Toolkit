@@ -1,0 +1,42 @@
+@import "dev/assets/scss/_libraries/common";
+.label-xxl {
+	width: 100%;	
+	position: relative;
+ 	background: transparent url($assetPathShared + '/img/label-xxl-shadow575.png') 0 0 no-repeat;
+ 	
+ 	h2 {
+ 		padding: 22px 0 22px 20px;
+ 	  	color: $colorBlueDark;
+ 	 	width:95%;
+ 		font-size: 1.250em;
+ 		line-height: 1.250em;
+ 		margin: 0;
+ 	}
+ 	.line{
+ 	  position:absolute;
+ 	  height:2px;
+ 	  width:100%;
+ 	  left:0;
+ 	  bottom:0;
+ 	  background: transparent url($assetPathShared + '/img/label-xxl-line575.png') 0 0 no-repeat;
+ 	}
+}
+@media screen and (min-width: $breakpoint2) {
+	.label-xxl {
+		background: transparent url($assetPathShared + '/img/label-xxl-shadow575.png') 0 0 no-repeat;
+		h2 {
+		padding: 12px 0 10px 20px;
+		}
+	}
+}
+@media screen and (min-width: $breakpoint3) {
+	.label-xxl {
+		background: transparent url($assetPathShared + '/img/label-xxl-shadow1100.png') 0 0 no-repeat;
+		h2 {
+		padding: 18px 0 16px 30px;
+		}
+ 		.line{
+     background-image: url($assetPathShared + '/img/label-xxl-line1100.png')  
+    }
+	}
+}
