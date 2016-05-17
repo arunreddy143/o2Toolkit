@@ -98,12 +98,12 @@ placeholder {
     float: left;
     width: 20%; }
     .nav-primary .logo.telefonica {
-      display: none; }
+      display: block; }
     .nav-primary .logo.o2 {
       padding: 0;
       width: 60px;
       height: 60px;
-      position: absolute;
+      position: relative;
       left: 0; }
       .nav-primary .logo.o2 a {
         width: 60px;
@@ -148,7 +148,6 @@ placeholder {
             width: 32px;
             margin: 0 0 0 20px; }
   .nav-primary .nav-consumer {
-    clear: both;
     display: block; }
     .nav-primary .nav-consumer ul {
       margin: 0;
@@ -302,7 +301,8 @@ placeholder {
         padding: 16px 8px 0 0; }
       .nav-primary .logo.o2 {
         height: 31px;
-        width: 32px; }
+        width: 32px;
+        position: absolute; }
         .nav-primary .logo.o2 a {
           height: auto;
           width: auto;
