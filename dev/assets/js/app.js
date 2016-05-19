@@ -47,14 +47,14 @@ myApp.directive('fullSpec', function(){
       replace: true,
       scope:{name:"@"},
       template:"<a href='javascript:void(0)' class='specsLink'>{{name}}</a>",
-      link:function($scope, element, attrs) {
+      link:function($scope, element) {
             angular.element('.fullSpecs').hide();
         element.bind('click',function() {
             angular.element(this).toggleClass('specActive').next().closest('.fullSpecs').slideToggle();
         });
       }
 
-      }  
+      };
 });
 
 
@@ -66,42 +66,30 @@ myApp.controller('formSearchController',function($scope,$state,modulesService){
   $scope.modulesName = [];
   modulesService.moduleData().then(function(httpData) {
         $scope.moduleData=httpData.data.modules;
-        for(i=0;i<$scope.moduleData.length;i++){
+        for(var i=0;i<$scope.moduleData.length;i++){
          $scope.modulesName.push($scope.moduleData[i].name);
       }       
-  })
+  });
 
   $scope.clicker = function(){
-    found = $.inArray($scope.selectedModule, $scope.modulesName) > -1
-    val = $scope.selectedModule.split(" ");
-    url = val[0].toLowerCase();
-    finalurl = url.concat(val[1]); 
+    var found = $.inArray($scope.selectedModule, $scope.modulesName) > -1;
+    var val = $scope.selectedModule.split(" ");
+    var url = val[0].toLowerCase();
+    var finalurl = url.concat(val[1]); 
     if(found){
       $state.go(finalurl);
     }
-  }
+  };
 
 });
 
-myApp.directive('formSearch', function($timeout){
+myApp.directive('formSearch', function(){
     return {
       restrict: 'AE',
       replace: true,
       controller: 'formSearchController',
       scope:{name:"@"},
-      template:`<form autocomplete="off" action="" method="GET">
-         <label for"search"="">Search for modules</label> 
-         <div class="fieldandsubmitbar"> 
-          <input type="text" list="modules" ng-model="selectedModule" ng-change="clicker()" name="query" placeholder="Keywords"> 
-          <input type="submit" value="" >
-          <datalist id="modules">
-            <option ng-repeat="modules in modulesName">{{modules}}</option>
-          </datalist>
-         </div> 
-        </form>`,
-      link:function(scope, element, attrs) {
-        
-        }
+      template:'<form autocomplete="off" action="" method="GET"><label for"search"="">Search for modules</label><div class="fieldandsubmitbar"><input type="text" list="modules" ng-model="selectedModule" ng-change="clicker()" name="query" placeholder="Keywords"> <input type="submit" value="" ><datalist id="modules"> <option ng-repeat="modules in modulesName">{{modules}}</option></datalist></div> </form>'
 
       };  
 });
@@ -116,7 +104,8 @@ myApp.controller('deviceViewController',function($scope,$window){
     }
   
   $scope.openwindow = function(view,orientation) {
-    if (openedwindow != ''){
+    var wd,ht;
+    if (openedwindow !== ''){
         openedwindow.close();
      }
 
@@ -139,10 +128,10 @@ myApp.controller('deviceViewController',function($scope,$window){
         ht = '768'; 
       }
     }
-      val = window.location.href;
+      var val = window.location.href;
         openedwindow = $window.open( val+ '?hidelinks=true','targetWindow','toolbar=no,location=no, status=no, menubar=no, scrollbars=yes,resizable=yes,width='+ wd + ', height='+ht);
 
-    }
+    };
 
 });
 

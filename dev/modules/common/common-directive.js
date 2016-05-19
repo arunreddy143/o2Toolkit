@@ -1,15 +1,15 @@
-myApp.directive('preCode', function($timeout){
+var myApp=myApp.directive('preCode', function($timeout){
     return {
       restrict: 'AE',
       replace: true,
       scope:{name:"@"},
       template:"<pre class='preCode prettyprint'>sadas</pre>",
-      link:function($scope, element, attrs) {
+      link:function($scope, element) {
         $timeout(function() {
         $('[data-behavior="sample_code"').each(function(){ 
           var container = $(this);
           
-          var target = container.closest('.preCode'); 
+          //var target = container.closest('.preCode'); 
           //if we have a target
           
             // get the sample's html
@@ -33,5 +33,5 @@ myApp.directive('preCode', function($timeout){
       }
 
 
-      }  
+      }; 
 });

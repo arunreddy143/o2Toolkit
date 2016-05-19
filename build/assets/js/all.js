@@ -40155,14 +40155,14 @@ myApp.directive('fullSpec', function(){
       replace: true,
       scope:{name:"@"},
       template:"<a href='javascript:void(0)' class='specsLink'>{{name}}</a>",
-      link:function($scope, element, attrs) {
+      link:function($scope, element) {
             angular.element('.fullSpecs').hide();
         element.bind('click',function() {
             angular.element(this).toggleClass('specActive').next().closest('.fullSpecs').slideToggle();
         });
       }
 
-      }  
+      };
 });
 
 
@@ -40174,42 +40174,30 @@ myApp.controller('formSearchController',function($scope,$state,modulesService){
   $scope.modulesName = [];
   modulesService.moduleData().then(function(httpData) {
         $scope.moduleData=httpData.data.modules;
-        for(i=0;i<$scope.moduleData.length;i++){
+        for(var i=0;i<$scope.moduleData.length;i++){
          $scope.modulesName.push($scope.moduleData[i].name);
       }       
-  })
+  });
 
   $scope.clicker = function(){
-    found = $.inArray($scope.selectedModule, $scope.modulesName) > -1
-    val = $scope.selectedModule.split(" ");
-    url = val[0].toLowerCase();
-    finalurl = url.concat(val[1]); 
+    var found = $.inArray($scope.selectedModule, $scope.modulesName) > -1;
+    var val = $scope.selectedModule.split(" ");
+    var url = val[0].toLowerCase();
+    var finalurl = url.concat(val[1]); 
     if(found){
       $state.go(finalurl);
     }
-  }
+  };
 
 });
 
-myApp.directive('formSearch', function($timeout){
+myApp.directive('formSearch', function(){
     return {
       restrict: 'AE',
       replace: true,
       controller: 'formSearchController',
       scope:{name:"@"},
-      template:`<form autocomplete="off" action="" method="GET">
-         <label for"search"="">Search for modules</label> 
-         <div class="fieldandsubmitbar"> 
-          <input type="text" list="modules" ng-model="selectedModule" ng-change="clicker()" name="query" placeholder="Keywords"> 
-          <input type="submit" value="" >
-          <datalist id="modules">
-            <option ng-repeat="modules in modulesName">{{modules}}</option>
-          </datalist>
-         </div> 
-        </form>`,
-      link:function(scope, element, attrs) {
-        
-        }
+      template:'<form autocomplete="off" action="" method="GET"><label for"search"="">Search for modules</label><div class="fieldandsubmitbar"><input type="text" list="modules" ng-model="selectedModule" ng-change="clicker()" name="query" placeholder="Keywords"> <input type="submit" value="" ><datalist id="modules"> <option ng-repeat="modules in modulesName">{{modules}}</option></datalist></div> </form>'
 
       };  
 });
@@ -40224,7 +40212,8 @@ myApp.controller('deviceViewController',function($scope,$window){
     }
   
   $scope.openwindow = function(view,orientation) {
-    if (openedwindow != ''){
+    var wd,ht;
+    if (openedwindow !== ''){
         openedwindow.close();
      }
 
@@ -40247,10 +40236,10 @@ myApp.controller('deviceViewController',function($scope,$window){
         ht = '768'; 
       }
     }
-      val = window.location.href;
+      var val = window.location.href;
         openedwindow = $window.open( val+ '?hidelinks=true','targetWindow','toolbar=no,location=no, status=no, menubar=no, scrollbars=yes,resizable=yes,width='+ wd + ', height='+ht);
 
-    }
+    };
 
 });
 
@@ -40282,18 +40271,18 @@ function getParameterByName(name, url) {
 
 
 
-myApp.directive('preCode', function($timeout){
+var myApp=myApp.directive('preCode', function($timeout){
     return {
       restrict: 'AE',
       replace: true,
       scope:{name:"@"},
       template:"<pre class='preCode prettyprint'>sadas</pre>",
-      link:function($scope, element, attrs) {
+      link:function($scope, element) {
         $timeout(function() {
         $('[data-behavior="sample_code"').each(function(){ 
           var container = $(this);
           
-          var target = container.closest('.preCode'); 
+          //var target = container.closest('.preCode'); 
           //if we have a target
           
             // get the sample's html
@@ -40317,221 +40306,30 @@ myApp.directive('preCode', function($timeout){
       }
 
 
-      }  
+      }; 
 });
-myApp.directive('promoMDirective', function($compile) {
+var myApp=myApp.directive('promoMDirective', function() {
   return {
       restrict: 'AE', 
       replace: true,
       scope:{moduledata:"@"},
-      template: ` 
-      <div class="module promo promo1 desktop-fragments-promoM-group-1  module-first diagonal  dark   "> 
-         <a href="https://www.o2.co.uk/shop/phones/apple/iphone-6s/" title="Lorem ipsum" manual_cm_re="promoM-_-iPhone 6s-_-Buy now" target="_self"> 
-          <div class="module-body">  
-           <div class="info"> 
-            <h3>Lorem  ipsum</h3> 
-            <p>Promo-m module with dark and diagonal class</p> 
-            <p class="product-cta">Lorem ipsum</p> 
-           </div> 
-          </div> <span class="hover-down"></span><span class="hover-down"></span></a> 
-        </div> `,
-		link: function ( $scope, element, attrs ) { 
-			var moduleJson=JSON.parse($scope.moduledata);
-			angular.forEach(moduleJson, function(moduleVal, key) {				
-				if(moduleVal.name==="Promo M") {
-					$scope.moduleName=moduleVal.name;
-					$scope.master = moduleVal.component;
-					$scope.module=moduleVal.component;
-					angular.forEach($scope.module.extraClass, function(moduleExtraClass, key) {	
-						
-						if(moduleExtraClass.selected==="true") {
-							$scope.extraClass=moduleExtraClass.shade;
-						}
-						
-					});
-				}
-			});
-			
-			
-			
-			$scope.currentIndex;
-			element.bind('click', function(currentObj) {
-				$scope.currentIndex=$('.module-section').index(this);
-				var DOM = angular.element(`<div class="modal"><div class="modal-dialog">
-				<div class="modal-content" >
-				<form name="moduleForm">
-				<div class="modal-header">
-				    <h3 class="modal-title">{{moduleName}}</h3>
-				</div>
-				<div class="modal-body">
-				    
-		    	<div class="form-row">
-		    	<label>Title</label>
-		    	<textarea type="text" ng-model="module.title"></textarea>
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Copy</label>
-		    	<textarea type="text" value="${$scope.copy}}" ng-model="module.copy"></textarea>
-		    	</div>
-		    	<div class="form-row">
-		    	<label>CTA Link</label>
-		    	<textarea type="text" value="${$scope.cta}}" ng-model="module.cta"></textarea>
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Extra Classes</label>
-		    	<select ng-model="extraClass"
-          ng-options="module.shade as module.shade for module in module.extraClass">
-    </select></div>
-		    	<div class="form-row">
-		    	<label>DD(Mobile)</label>
-		    	<input type="file" name="image" accept="image/*" fileread="module.mobile">
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Bp2 (Tablet)</label>
-		    	<input type="file" name="image" accept="image/*" fileread="module.tablet">
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Bp3 (Desktop)</label>
-		    	<input type="file" name="image" accept="image/*" fileread="module.desktop">
-		    	</div>
-				</div>
-				<div class="modal-footer">
-				    <button class="btn btn-primary btn-primary" type="button" ng-click="ok(module,currentIndex)">OK</button>
-				    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-				</div>
-				</form>
-				</div>
-			</div></div>`);
-			$compile(DOM)($scope);
-				$( "body" ).find('.modal').remove();				
-	         	$( DOM).appendTo( $( "body" ) );
-	         	$( '.modal').addClass('fade in').css({"z-index": 1050,   "display": "block"});
-
-	        });
-	        $scope.ok=function(module,currentIndex) {	 
-	        	var bgApply=$('.module-section').eq($scope.currentIndex).find('.bkg-img');
-	        	var responsiveImg=function() {
-	        	if(angular.element(window).width()<575) {
-	        		$(bgApply).css( 'background-image',"url('" + module.mobile + "')"); 
-	        	}
-	        	if(angular.element(window).width()>=575 && angular.element(window).width()<=815) {
-	        		$(bgApply).css( 'background-image',"url('" + module.tablet + "')");  
-	        	}
-	        	if(angular.element(window).width()>=815) {
-	        		$(bgApply).css( 'background-image',"url('" + module.desktop + "')");
-	        	}
-	        	$scope.master = angular.copy($scope.module);
-	        }
-        	responsiveImg();
-        	removeModal(currentIndex);
-        	$(window).on("resize", function () {
-	        	responsiveImg();
-	        });     	
-	        	
-	        	
-	        }
-
-	        $scope.cancel=function() {
-	        	console.log('cancel')
-	        	removeModal();
-	        	$scope.module = angular.copy($scope.master);
-	        }
-	        var removeModal=function() {
-	        	$( '.modal').remove();
-
-	        };
-	        
-	        
-		}
+      templateUrl: "./modules/promo-m/template.html"
   	};
 }); 
 
-myApp.directive('promoSDirective', function($compile) {
+var myApp=myApp.directive('promoSDirective', function($compile) {
   return {
       restrict: 'AE',  
       replace: true,
       scope:{moduledata:"@"},
-      template: `
-      <div class="module-section" data-behavior="sample_code">
-      <div class="module promo-s {{extraClass}}" > 
-	<div class="desktop-fragments-promoS-group-1 promo bkg-img">
-		<div class="module-body">
-			<div class="info"> 
-				<h3>{{module.title}}</h3> 
-				<p> {{module.copy}} </p> 
-				<p class="product-cta">{{module.cta}}</p> 
-			</div> 
-		</div> 
-	<span class="hover-down"></span> 
-	</div> 
-</div></div>`,
-		link: function ( $scope, element, attrs ) { 
-			var moduleJson=JSON.parse($scope.moduledata);
-			angular.forEach(moduleJson, function(moduleVal, key) {				
-				if(moduleVal.name==="Promo S") {
-					$scope.moduleName=moduleVal.name;
-					$scope.master = moduleVal.component;
-					$scope.module=moduleVal.component;
-					angular.forEach($scope.module.extraClass, function(moduleExtraClass, key) {	
-						
-						if(moduleExtraClass.selected==="true") {
-							$scope.extraClass=moduleExtraClass.shade;
-						}
-						
-					});
-				}
-			});
-			
-			
+      templateUrl: "./modules/promo-s/template.html",
+		link: function ( $scope, element ) { 
+			//var moduleJson=JSON.parse($scope.moduledata);
 			
 			$scope.currentIndex;
-			element.bind('click', function(currentObj) {
+			element.bind('click', function() {
 				$scope.currentIndex=$('.module-section').index(this);
-				var DOM = angular.element(`<div class="modal"><div class="modal-dialog">
-				<div class="modal-content" >
-				<form name="moduleForm">
-				<div class="modal-header">
-				    <h3 class="modal-title">{{moduleName}}</h3>
-				</div>
-				<div class="modal-body">
-				    
-		    	<div class="form-row">
-		    	<label>Title</label>
-		    	<textarea type="text" ng-model="module.title"></textarea>
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Copy</label>
-		    	<textarea type="text" value="${$scope.copy}}" ng-model="module.copy"></textarea>
-		    	</div>
-		    	<div class="form-row">
-		    	<label>CTA Link</label>
-		    	<textarea type="text" value="${$scope.cta}}" ng-model="module.cta"></textarea>
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Extra Classes</label>
-		    	<select ng-model="extraClass"
-          ng-options="module.shade as module.shade for module in module.extraClass">
-    </select></div>
-		    	<div class="form-row">
-		    	<label>DD(Mobile)</label>
-		    	<input type="file" name="image" accept="image/*" fileread="module.mobile">
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Bp2 (Tablet)</label>
-		    	<input type="file" name="image" accept="image/*" fileread="module.tablet">
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Bp3 (Desktop)</label>
-		    	<input type="file" name="image" accept="image/*" fileread="module.desktop">
-		    	</div>
-				</div>
-				<div class="modal-footer">
-				    <button class="btn btn-primary btn-primary" type="button" ng-click="ok(module,currentIndex)">OK</button>
-				    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-				</div>
-				</form>
-				</div>
-			</div></div>`);
+				var DOM = angular.element("");
 			$compile(DOM)($scope);
 				$( "body" ).find('.modal').remove();				
 	         	$( DOM).appendTo( $( "body" ) );
@@ -40551,7 +40349,7 @@ myApp.directive('promoSDirective', function($compile) {
 	        		$(bgApply).css( 'background-image',"url('" + module.desktop + "')");
 	        	}
 	        	$scope.master = angular.copy($scope.module);
-	        }
+	        };
         	responsiveImg();
         	removeModal(currentIndex);
         	$(window).on("resize", function () {
@@ -40559,13 +40357,12 @@ myApp.directive('promoSDirective', function($compile) {
 	        });     	
 	        	
 	        	
-	        }
+	        };
 
 	        $scope.cancel=function() {
-	        	console.log('cancel')
 	        	removeModal();
 	        	$scope.module = angular.copy($scope.master);
-	        }
+	        };
 	        var removeModal=function() {
 	        	$( '.modal').remove();
 
@@ -40582,26 +40379,27 @@ myApp.directive("fileread", [function () {
         scope: {
             fileread: "="
         },
-        link: function (scope, element, attributes) {
+        link: function (scope, element) {
             element.bind("change", function (changeEvent) {
+            	var FileReader;
                 var reader = new FileReader();
                 reader.onload = function (loadEvent) {
                     scope.$apply(function () {
                         scope.fileread = loadEvent.target.result;
                     });
-                }
+                };
                 reader.readAsDataURL(changeEvent.target.files[0]);
             });
         }
-    }
+    };
 }]);
 
 
 //Directive for adding buttons on click that show an alert on click
-myApp.directive("addmodules", function($compile){
-	return function(scope, element, attrs){
+myApp.directive("addmodules", function(/*$compile*/){
+	return function(scope, element){
 		element.bind("click", function(){
-			angular.element(document.getElementById('section')).append($compile("<promo-s-directive moduledata='{{moduleData}}' /> ")(scope));
+			//angular.element(document.getElementById('section')).append($compile("<promo-s-directive moduledata='{{moduleData}}' /> ")(scope));
 		});
 	};
 });

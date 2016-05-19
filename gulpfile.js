@@ -18,15 +18,12 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence')
     nodemon=require('gulp-nodemon')
     sourcemaps = require('gulp-sourcemaps')
-    concatCss = require('gulp-concat-css');
-
-
+    concatCss = require('gulp-concat-css')
+    stylish=require('jshint-stylish');
 // Clean
 gulp.task('clean', function() {
   return del(['build']);
 });
-
-
 // Styles
 gulp.task('sass', function() {  
     return gulp.src(['dev/modules/**/*.scss'])
@@ -39,14 +36,19 @@ gulp.task('sass', function() {
     .pipe(notify({ message: 'Styles task complete' }));    
 });
 
+gulp.task('lint', function() {
+  gulp.src(['dev/modules/**/*directive.js','dev/assets/js/*.js'])
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter(stylish));
+});
 
 // copy files
 gulp.task('copyFiles', function() {
 
-  gulp.src(['./dev/index.html'])    
+    gulp.src(['./dev/index.html'])    
     .pipe(gulp.dest('build/'))  
-    
-     gulp.src(['./dev/modules/**/*.html'])    
+
+    gulp.src(['./dev/modules/**/*.html'])    
     .pipe(gulp.dest('build/modules/'))
 
     gulp.src(['./dev/templates/**'])    
@@ -56,8 +58,7 @@ gulp.task('copyFiles', function() {
     .pipe(gulp.dest('build/assets/libs/'))   
 
     gulp.src(['./dev/assets/css/**'])    
-    .pipe(gulp.dest('build/assets/css/')) 
- 
+    .pipe(gulp.dest('build/assets/css/'))  
 
     gulp.src(['./dev/assets/img/**'])    
     .pipe(gulp.dest('build/assets/img/'))
@@ -67,50 +68,31 @@ gulp.task('copyFiles', function() {
 
     gulp.src(['./dev/assets/js/lib/jquery-1.12.1.min.js','./dev/assets/js/lib/angular.js','./dev/assets/js/lib/ui-bootstrap.js','./dev/assets/js/lib/angular-animate.js','./dev/assets/js/lib/angular-sanitize.js','./dev/assets/js/lib/angular-ui-router.js','./dev/assets/js/lib/angular-mocks.js','./dev/assets/js/app.js','./dev/modules/**/*controller.js','./dev/modules/**/*directive.js'])
     .pipe(concat('all.js'))
-    .pipe(gulp.dest('build/assets/js/'))
-
-    
+    .pipe(gulp.dest('build/assets/js/'))    
 
     .pipe(notify({ message: 'All files task complete' }));  
-
 });
-
 
 gulp.task('server', function(){
-  nodemon({
-    // the script to run the app
-    script: 'server.js',
-    ext: 'js'
-  }).on('restart', function(){ 
-    // when the app has restarted, run livereload.
-    gulp.src('server.js')
-});
+    nodemon({
+        // the script to run the app
+        script: 'server.js',
+        ext: 'js'
+    }).on('restart', function(){ 
+        // when the app has restarted, run livereload.
+        gulp.src('server.js')
+    });
 
 });
-
 
 gulp.task('watch', function() {
   gulp.watch(['dev/assets/css/**','dev/modules/**/**.scss','dev/modules/**/*.js','dev/assets/js/*'], ['sass','copyFiles']);
- 
 });
-
-/*default gulp task
-    1) cmd--> type gulp
-    2) it watches all file changes and recompiles where ever required
-*/
 
 gulp.task('default', function() {  
-  runSequence('clean', ['sass','copyFiles','server','watch']);  
+  runSequence('clean', ['sass' ,'lint','copyFiles','server','watch']);  
 });
 
-/*production gulp task
-    1) cmd--> type gulp prod
-    2) This is production deployment
-*/
 gulp.task('prod', function() {
   runSequence('clean', ['sass','copyFiles'])
 });
-
-
-
-
