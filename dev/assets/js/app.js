@@ -59,19 +59,25 @@ myApp.directive('fullSpec', function(){
 
 
 
-myApp.controller('formSearchController',function($scope,$state){
+myApp.controller('formSearchController',function($scope,$state,modulesService){
 
-  $scope.selectedModule = "";
-  $scope.modulesName = ["Promo M","Promo S","Promo XXL","Promo M Group"];
+ $scope.selectedModule = "";
+  $scope.moduleData = [];
+  $scope.modulesName = [];
+  modulesService.moduleData().then(function(httpData) {
+        $scope.moduleData=httpData.data.modules;
+        for(i=0;i<$scope.moduleData.length;i++){
+         $scope.modulesName.push($scope.moduleData[i].name);
+      }       
+  })
+
   $scope.clicker = function(){
     found = $.inArray($scope.selectedModule, $scope.modulesName) > -1
+    val = $scope.selectedModule.split(" ");
+    url = val[0].toLowerCase();
+    finalurl = url.concat(val[1]); 
     if(found){
-      if($scope.selectedModule == 'Promo M'){
-        $state.go('promoM')
-      }
-      else if($scope.selectedModule == 'Promo S'){
-        $state.go('promoS')
-      }
+      $state.go(finalurl);
     }
   }
 
