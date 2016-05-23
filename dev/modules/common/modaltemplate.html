@@ -1,45 +1,47 @@
-<div class="modal"><div class="modal-dialog">
-				<div class="modal-content" >
-				<form name="moduleForm">
+<div class="modal">
+	<div class="modal-dialog">
+		<div class="modal-content" >
+			<form name="moduleForm">
 				<div class="modal-header">
-				    <h3 class="modal-title">{{moduleName}}</h3>
+					<h3 class="modal-title">{{module.name}}</h3>
 				</div>
 				<div class="modal-body">
-				    
-		    	<div class="form-row">
-		    	<label>Title</label>
-		    	<textarea type="text" ng-model="module.title"></textarea>
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Copy</label>
-		    	<textarea type="text" value="${$scope.copy}}" ng-model="module.copy"></textarea>
-		    	</div>
-		    	<div class="form-row">
-		    	<label>CTA Link</label>
-		    	<textarea type="text" value="${$scope.cta}}" ng-model="module.cta"></textarea>
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Extra Classes</label>
-		    	<select ng-model="extraClass"
-          ng-options="module.shade as module.shade for module in module.extraClass">
-    </select></div>
-		    	<div class="form-row">
-		    	<label>DD(Mobile)</label>
-		    	<input type="file" name="image" accept="image/*" fileread="module.mobile">
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Bp2 (Tablet)</label>
-		    	<input type="file" name="image" accept="image/*" fileread="module.tablet">
-		    	</div>
-		    	<div class="form-row">
-		    	<label>Bp3 (Desktop)</label>
-		    	<input type="file" name="image" accept="image/*" fileread="module.desktop">
-		    	</div>
+					<div class="form-row">
+						<label>Title</label>
+						<textarea type="text" ng-model="module.title"></textarea>
+					</div>
+					<div class="form-row">
+						<label>Copy</label>
+						<textarea type="text" value="${$scope.copy}}" ng-model="module.copy"></textarea>
+					</div>
+					<div class="form-row">
+						<label>CTA Link</label>
+						<textarea type="text" value="${$scope.cta}}" ng-model="module.cta"></textarea>
+					</div>
+					<div class="form-row">
+						<label>Extra Classes</label>
+						<select ng-model="extraClass"
+						ng-options="module.shade as module.shade for module in module.extraClass">
+						</select>
+					</div>
+					<div class="form-row">
+						<label>DD(Mobile)</label>
+						<input type="file" name="image" accept="image/*" fileread="module.dd">
+					</div>
+					<div class="form-row">
+						<label>Bp2 (Tablet)</label>
+						<input type="file" name="image" accept="image/*" fileread="module.bp2">
+					</div>
+					<div class="form-row">
+						<label>Bp3 (Desktop)</label>
+						<input type="file" name="image" accept="image/*" fileread="module.bp3">
+					</div>
 				</div>
 				<div class="modal-footer">
-				    <button class="btn btn-primary btn-primary" type="button" ng-click="ok(module,currentIndex)">OK</button>
-				    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+					<button class="btn btn-primary btn-primary" type="button" ng-click="close(module)" data-dismiss="modal">OK</button>
+					<button class="btn btn-warning" type="button" ng-click="close('No')" data-dismiss="modal">Cancel</button>
 				</div>
-				</form>
-				</div>
-			</div></div>`
+			</form>
+		</div>
+	</div>
+</div>

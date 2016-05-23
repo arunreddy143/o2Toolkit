@@ -1,6 +1,6 @@
-var myApp=angular.module('myApp', ['ui.router','ngSanitize','ui.bootstrap']);
+var myApp=angular.module('myApp', ['ui.router','ngSanitize','ui.bootstrap','angularModalService']);
 
-myApp.config(function($stateProvider, $urlRouterProvider) {   
+myApp.config(function($stateProvider, $urlRouterProvider) {          
      
     
     $stateProvider                   

@@ -1,61 +1,59 @@
-<div class="grid">  
-	<div class="" ng-repeat="moduleData in moduleData | filter:{name:'Promo S'}">
-
-		<div class="module label-xxl desktop-fragments-label-xxl-2" > 
-	       <h2 >{{moduleData.name}}</h2> 
-	       <div class="line"></div> 
-	    </div>
-		
-		<div class="default-txt-container">
-			<p>{{moduleData.description}}</p>
-			<full-spec name="View Full Specifications"  />
-			<div class="fullSpecs" ng-bind-html="moduleData.full"></div>
-		</div>
+<div class="grid" ng-repeat="moduleData in moduleData | filter:{name:'Promo S'}">  
 	
+
+	<div class="module label-xxl desktop-fragments-label-xxl-2" > 
+       <h2 >{{moduleData.name}}</h2> 
+       <div class="line"></div> 
+    </div>
+	
+	<div class="default-txt-container">
+		<p>{{moduleData.description}}</p>
+		<full-spec name="View Full Specifications"  />
+		<div class="fullSpecs" ng-bind-html="moduleData.full"></div>
 	</div>
 	
-<button addmodules  class="btn-primary add-module">Add Module</button><br /><br />
+	
+	
+	<button addmodules  class="btn-primary add-module">Add Module</button>
+
+	<div class="section-wrap col-3" id="section"> 
+	  <promo-s-directive moduledata="{{moduleData}}" /> 
+	  <promo-s-directive moduledata="{{moduleData}}" /> 
+	</div>
+
+	<div class="code-snippet">
+		<div class="module label-xxl desktop-fragments-label-xxl-2" > 
+			<h2 >Code Snippet</h2> 
+			<div class="line"></div> 
+		</div>
 
 
-<div class="section-wrap col-3" id="section"> 
-  <promo-s-directive moduledata="{{moduleData}}" /> 
-</div>
+		<uib-tabset active="active">
+			<uib-tab index="0" heading="HTML">
 
-<div class="code-snippet">
-	<div class="module label-xxl desktop-fragments-label-xxl-2" > 
-	       <h2 >Code Snippet</h2> 
-	       <div class="line"></div> 
-	    </div>
+			<pre-code class="prettyprint"></pre-code>
 
+			</uib-tab>
 
-<uib-tabset active="active">
-    <uib-tab index="0" heading="HTML">
-
-    <pre-code class="prettyprint"></pre-code>
-
-	</uib-tab>
-   
-    <uib-tab index="1" heading="CSS">
-	<pre><code>
-	/* Code Samples */
-	pre {
+			<uib-tab index="1" heading="CSS">
+		<pre>
+		<code>
+		/* Code Samples */
+		pre {
 		white-space: pre-wrap;
 		white-space: -moz-pre-wrap;
 		white-space: -o-pre-wrap;
 		background: #faf8f0;
-	}
-	#content #pre-stylish code {
+		}
+		#content #pre-stylish code {
 		display: block;
 		padding: 0.5em 1em;
 		border: 1px solid #bebab0;
-	}
-	</code></pre>
-    </uib-tab>
-  </uib-tabset>
-	
-
-	
-	
+		}
+		</code>
+		</pre>
+			</uib-tab>
+		</uib-tabset>
 
 	</div>
 

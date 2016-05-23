@@ -1,87 +1,67 @@
-var myApp=myApp.directive('promoSDirective', function($compile) {
+var myApp=myApp.directive('promoSDirective', function($compile,ModalService) {
   return {
       restrict: 'AE',  
       replace: true,
       scope:{moduledata:"@"},
       templateUrl: "./modules/promo-s/template.html",
-		link: function ( $scope, element ) { 
-			//var moduleJson=JSON.parse($scope.moduledata);
-			
+		link: function ( $scope, element ) {  
+			$scope.module=JSON.parse($scope.moduledata);
 			$scope.currentIndex;
 			element.bind('click', function() {
-				$scope.currentIndex=$('.module-section').index(this);
-				var DOM = angular.element("");
-			$compile(DOM)($scope);
-				$( "body" ).find('.modal').remove();				
-	         	$( DOM).appendTo( $( "body" ) );
-	         	$( '.modal').addClass('fade in').css({"z-index": 1050,   "display": "block"});
+				
+				//$scope.currentIndex=$('.module-section').index(this);
+				ModalService.showModal({
+		            templateUrl: './modules/common/modaltemplate.html',
+		            controller: "ModalController",
+		            data:$scope.module
+		        }).then(function(modal) {
+		            modal.element.show();
+		            modal.close.then(function(result) {
+
+
+		            	console.log(element.find('.bkg-img'))
+		            	$scope.module=result;
+		            	responsiveImg();
+		                $scope.message = "You said " + result; 
+		            });
+		        });
+			
 
 	        });
-	        $scope.ok=function(module,currentIndex) {	 
-	        	var bgApply=$('.module-section').eq($scope.currentIndex).find('.bkg-img');
+	        function responsiveImg() {	 
+	        	var bgApply=element.find('.bkg-img');
 	        	var responsiveImg=function() {
 	        	if(angular.element(window).width()<575) {
-	        		$(bgApply).css( 'background-image',"url('" + module.mobile + "')"); 
+	        		$(bgApply).css( 'background-image',"url('" + $scope.module.dd + "')"); 
 	        	}
 	        	if(angular.element(window).width()>=575 && angular.element(window).width()<=815) {
-	        		$(bgApply).css( 'background-image',"url('" + module.tablet + "')");  
+	        		$(bgApply).css( 'background-image',"url('" + $scope.module.bp2 + "')");  
 	        	}
 	        	if(angular.element(window).width()>=815) {
-	        		$(bgApply).css( 'background-image',"url('" + module.desktop + "')");
+	        		$(bgApply).css( 'background-image',"url('" + $scope.module.bp3 + "')");
 	        	}
-	        	$scope.master = angular.copy($scope.module);
 	        };
         	responsiveImg();
-        	removeModal(currentIndex);
         	$(window).on("resize", function () {
 	        	responsiveImg();
 	        });     	
 	        	
 	        	
 	        };
-
-	        $scope.cancel=function() {
-	        	removeModal();
-	        	$scope.module = angular.copy($scope.master);
-	        };
-	        var removeModal=function() {
-	        	$( '.modal').remove();
-
-	        };
-	        
 	        
 		}
   	};
 }); 
 
+myApp.controller('ModalController', function($scope, close,options) {
+	$scope.module=options.data; 
+ $scope.close = function(result) {
+ 	$scope.module=result;
+ 	close(result, 500); // close, but give 500ms for bootstrap to animate
+ };
 
-myApp.directive("fileread", [function () {
-    return {
-        scope: {
-            fileread: "="
-        },
-        link: function (scope, element) {
-            element.bind("change", function (changeEvent) {
-            	var FileReader;
-                var reader = new FileReader();
-                reader.onload = function (loadEvent) {
-                    scope.$apply(function () {
-                        scope.fileread = loadEvent.target.result;
-                    });
-                };
-                reader.readAsDataURL(changeEvent.target.files[0]);
-            });
-        }
-    };
-}]);
-
-
-//Directive for adding buttons on click that show an alert on click
-myApp.directive("addmodules", function(/*$compile*/){
-	return function(scope, element){
-		element.bind("click", function(){
-			//angular.element(document.getElementById('section')).append($compile("<promo-s-directive moduledata='{{moduleData}}' /> ")(scope));
-		});
-	};
 });
+
+
+
 

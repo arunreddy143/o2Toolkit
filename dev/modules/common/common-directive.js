@@ -35,3 +35,32 @@ var myApp=myApp.directive('preCode', function($timeout){
 
       }; 
 });
+
+myApp.directive("fileread", [function () {
+    return {
+        scope: {
+            fileread: "="
+        },
+        link: function (scope, element) {
+            element.bind("change", function (changeEvent) {  
+                var reader = new FileReader();
+                reader.onload = function (loadEvent) {
+                    scope.$apply(function () {
+                        scope.fileread = loadEvent.target.result;
+                    });
+                };
+                reader.readAsDataURL(changeEvent.target.files[0]);
+            });
+        }
+    };
+}]);
+
+
+//Directive for adding buttons on click that show an alert on click
+myApp.directive("addmodules", function(/*$compile*/){
+  return function(scope, element){
+    element.bind("click", function(){
+      //angular.element(document.getElementById('section')).append($compile("<promo-s-directive moduledata='{{moduleData}}' /> ")(scope));
+    });
+  };
+});
