@@ -267,7 +267,8 @@ input::-webkit-calendar-picker-indicator {
   width: auto; }
 
 .add-module {
-  margin-left: 20px; }
+  margin-left: 20px;
+  margin-bottom: 20px; }
 
 .nav-tabs {
   display: block;
@@ -321,6 +322,23 @@ input::-webkit-calendar-picker-indicator {
 .tab-content .tab-pane.active {
   display: block; }
 
+.default-content-container {
+  padding: 20px 20px; }
+  .default-content-container h2, .default-content-container h3 {
+    color: #032b5a;
+    font-size: 24px;
+    font-size: 1.5rem;
+    padding-bottom: 20px; }
+  .default-content-container p {
+    font-size: 16px;
+    font-size: 1rem;
+    padding-bottom: 20px; }
+  .default-content-container ul, .default-content-container li {
+    list-style: disc;
+    margin-left: 20px; }
+  .default-content-container ul {
+    padding-bottom: 20px; }
+
 @media screen and (min-width: 575px) {
   .nav-primary .nav-consumer {
     display: block; }
@@ -331,6 +349,8 @@ input::-webkit-calendar-picker-indicator {
   .nav-primary .logo.telefonica {
     padding-top: 10px; }
   .default-txt-container {
+    padding-top: 0; }
+  .default-content-container {
     padding-top: 0; } }
 
 @media screen and (min-width: 815px) {

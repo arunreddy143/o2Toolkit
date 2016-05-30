@@ -1,3 +1,338 @@
-.promo-m {
-	color:red;
+@import "dev/assets/scss/_libraries/common";
+
+.no-js, .no-backgroundsize {
+  .promo {
+    background-size:auto;
+    background-position:center center;
+  }
+}
+.backgroundsize{
+  .promo {
+    background-size:cover;
+    background-position:right center;
+  }
+}
+
+.large-font-promo-m{
+	.promo {
+		.module-body{
+			.info{
+		        p{
+		          font-size: 1.25em;
+		        }
+	        }
+		}
+	}
+}
+.promo {
+    position: relative;
+	display:block;
+	width: 100%;
+	overflow:hidden;
+
+	> a{
+		display: block;
+		height: auto;
+		overflow: hidden;
+	}
+
+	.module-body{
+	  background-color: $colorTransparent;
+    background-repeat:  no-repeat;
+    background-position:  center center;
+    background-attachment: scroll;
+    background-image: none;
+		width: 66%;
+		height: 150px;
+		float:left;
+		display: block;
+		margin: 0;
+		.info {
+			padding: 20px 0 20px 20px;
+      //min-height: 90px;
+			p {
+				color: $colorWhite;
+				width: 80%;
+				font-size: 0.75em;
+			}
+			.product-cta {
+				color: $colorWhite;
+				background: url($assetPathShared + $ctaArrow) no-repeat scroll 0 -95px transparent;
+				position: absolute;
+				padding: 0 0 5px 25px;
+				display: block;
+				font-size: 0.875em;
+				bottom: 15px;
+			}
+			h3{
+				color: $colorWhite;
+				font-size: 1.25em;
+				line-height:1em;
+				margin: 0 0 10px 0;
+			}
+		}
+	}
+
+
+	.diagonal{
+		.module-body {
+			background: url($assetPathShared + '/img/modules/module-bg-diagonal.png') no-repeat scroll right 0;
+		}
+	}
+	&.iphone{
+    .info h3, .info p, .info p.product-cta {display:none;} 
+    background-position:0 50% !important;
+  }
+  &.tall{
+    .module-body{
+      height:180px;
+   }
+  }
+
+	&.dark{
+		background-color: $colorBlueDark;
+	}
+
+  &.livePerson{
+
+     .module-body {
+  width: 95%;
+  }
+
+  }
+
+	&.light {
+		background-color: $colorGreyDark;
+		.module-body {
+      .info {
+        .product-cta {
+          background-position: -2px -35px;
+          color: $colorBlueLight;
+          }
+          h3, p {
+            color: $colorBlueDark;
+          }
+        }
+      }
+  		&.diagonal {
+  			.module-body{
+  				background-image: url($assetPathShared + '/img/modules/module-bg-diagonal-light.png');
+   				.product-cta {
+  					color: $colorBlueLight;
+  			}
+  		}
+    }
+	}
+
+	&.transparent {
+		background-color: $colorTransparent;
+		.module-body {
+			.info {
+				.product-cta {
+					background-position: -2px -35px;
+					color: $colorBlueLight;
+				}
+				h3, p {
+					color: $colorBlueDark;
+				}
+			}
+		}
+	}
+
+	&.light-block{
+    background-position: center right;
+		.module-body {
+			background: url($assetPathShared + '/img/modules/promo-m-bg-light-block-tall-mobile.png') repeat-x scroll 0 0 transparent;
+			.info{
+        .product-cta {
+          background-position: -2px -35px;
+          color: $colorBlueLight;
+		  		}
+				h3, p {
+					color: $colorBlueDark;
+				}
+			}
+		}
+	}
+}
+
+
+@media screen and (min-width: $breakpoint2){ // middle
+
+  .promo {
+    background-size:auto !important;
+    background-position: center center !important;
+
+    .module-body{
+    height:200px;
+    width: 65%;
+      .info{
+        padding: 20px 0 20px 20px;
+        min-height: 90px;
+        h3 {
+          font-size: 1.500em;
+          line-height: 1.097em;
+          margin: 0 0 8px;
+        }
+        p{
+          width: 100%;
+          font-size: 0.875em;
+        }
+        .product-cta {
+          bottom: 20px;
+          font-size: 0.875em;
+          line-height: 1.250em;
+        }
+      }
+    }
+  	&.light-block{
+  		.module-body{
+  			background: url($assetPathShared + '/img/modules/module-bg-white-box.png') repeat scroll 0 0 transparent;
+  		}
+  	}
+
+    &.tall{
+    .module-body{
+      height:250px;
+      .info{
+        padding: 30px 0 30px 20px;
+        .product-cta{
+          padding: 0 0 5px 27px;
+          font-size: 1.313em;
+          background-position: 0 -58px;
+          font-family: Frutiger45Light, sans-serif;
+          font-weight:100;
+        }
+      }
+    }
+
+
+
+    &.light-block {
+      .module-body{
+        background-image: url($assetPathShared + '/img/modules/module-bg-white-box-tall-tablet.png');
+        width:63%;
+      }
+    }
+
+    &.light, &.light-block{
+      .product-cta{
+        background-position: 0 2px!important;
+      }
+    }
+
+
+
+   }
+    &.iphone{
+      background-size:cover !important;
+      background-position:center center !important;
+    }
+  }
+
+  //.col-3 .promo, .col-1third .promo{
+  //  .module-body{
+  //    width: 92%
+  //  }
+  //}
+
+}
+
+
+@media screen and (min-width: $breakpoint3){ // Desktop
+
+	.promo {
+	  background-size:auto !important;
+    background-position: center center !important;
+		.module-body{
+			width:65%;
+		.info{
+			min-height: 140px;
+			padding: 30px 0 30px 30px;
+			  h3 {
+				font-size: 1.75em;
+			  }
+			  p{
+        		width: 75%;
+				font-size: 0.875em;
+			  }
+			  .product-cta {
+				font-size: 0.875em;
+			  }
+			}
+		}
+    &.tall{
+      .module-body{
+        height:300px;
+        .info{
+          padding: 40px 0 40px 30px;
+          .product-cta{
+            padding: 0 0 5px 27px;
+            font-size: 1.563em;
+            background-position: 0 -55px;
+            font-family: Frutiger45Light, sans-serif;
+            font-weight:100;
+          }
+        }
+      }
+      &.light,
+      &.light-block{
+        .module-body{
+          width:65%;
+          .info{
+            .product-cta{
+              background-position: 0 5px!important;
+            }
+          }
+        }
+      }
+      &.light-block{
+        .module-body{
+          background-image: url($assetPathShared + '/img/modules/module-bg-white-box-tall-desktop.png');
+        }
+      }
+    }
+    &.iphone{
+      background-size:auto !important;
+      background-position:center center !important;
+    }
+  }
+
+  .col-2 {
+    .light-block{
+      .module-body{
+        //width: 240px;
+      }
+    }
+  }
+  .col-3 {
+    .promo.light-block{
+      .module-body{
+        width: 65%;
+        .info{
+          padding: 20px 0 20px 20px;
+        }
+      }
+    }
+  }
+
+}
+
+#lp-mobile-chat-button, .lp-mobile-chat-button {
+  display: none;
+  background:none;
+  padding:0px;
+  margin: 0px;
+  border:0px;
+  color: #FFF;
+}
+
+.lp {
+  height: 150px;
+}
+@media screen and (min-width: $breakpoint2){
+  .lp {
+    height: 200px;
+    display:inline;
+  }
 }

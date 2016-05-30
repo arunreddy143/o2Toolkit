@@ -1,2 +1,187 @@
-.promo-m {
-  color: red; }
+.no-js .promo, .no-backgroundsize .promo {
+  background-size: auto;
+  background-position: center center; }
+
+.backgroundsize .promo {
+  background-size: cover;
+  background-position: right center; }
+
+.large-font-promo-m .promo .module-body .info p {
+  font-size: 1.25em; }
+
+.promo {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden; }
+  .promo > a {
+    display: block;
+    height: auto;
+    overflow: hidden; }
+  .promo .module-body {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-image: none;
+    width: 66%;
+    height: 150px;
+    float: left;
+    display: block;
+    margin: 0; }
+    .promo .module-body .info {
+      padding: 20px 0 20px 20px; }
+      .promo .module-body .info p {
+        color: #ffffff;
+        width: 80%;
+        font-size: 0.75em; }
+      .promo .module-body .info .product-cta {
+        color: #ffffff;
+        background: url("//static.preview1s.o2.co.uk/shared/img/promo-cta-arrow.png") no-repeat scroll 0 -95px transparent;
+        position: absolute;
+        padding: 0 0 5px 25px;
+        display: block;
+        font-size: 0.875em;
+        bottom: 15px; }
+      .promo .module-body .info h3 {
+        color: #ffffff;
+        font-size: 1.25em;
+        line-height: 1em;
+        margin: 0 0 10px 0; }
+  .promo .diagonal .module-body {
+    background: url("//static.preview1s.o2.co.uk/shared/img/modules/module-bg-diagonal.png") no-repeat scroll right 0; }
+  .promo.iphone {
+    background-position: 0 50% !important; }
+    .promo.iphone .info h3, .promo.iphone .info p, .promo.iphone .info p.product-cta {
+      display: none; }
+  .promo.tall .module-body {
+    height: 180px; }
+  .promo.dark {
+    background-color: #032b5a; }
+  .promo.livePerson .module-body {
+    width: 95%; }
+  .promo.light {
+    background-color: #efefef; }
+    .promo.light .module-body .info .product-cta {
+      background-position: -2px -35px;
+      color: #419eda; }
+    .promo.light .module-body .info h3, .promo.light .module-body .info p {
+      color: #032b5a; }
+    .promo.light.diagonal .module-body {
+      background-image: url("//static.preview1s.o2.co.uk/shared/img/modules/module-bg-diagonal-light.png"); }
+      .promo.light.diagonal .module-body .product-cta {
+        color: #419eda; }
+  .promo.transparent {
+    background-color: transparent; }
+    .promo.transparent .module-body .info .product-cta {
+      background-position: -2px -35px;
+      color: #419eda; }
+    .promo.transparent .module-body .info h3, .promo.transparent .module-body .info p {
+      color: #032b5a; }
+  .promo.light-block {
+    background-position: center right; }
+    .promo.light-block .module-body {
+      background: url("//static.preview1s.o2.co.uk/shared/img/modules/promo-m-bg-light-block-tall-mobile.png") repeat-x scroll 0 0 transparent; }
+      .promo.light-block .module-body .info .product-cta {
+        background-position: -2px -35px;
+        color: #419eda; }
+      .promo.light-block .module-body .info h3, .promo.light-block .module-body .info p {
+        color: #032b5a; }
+
+@media screen and (min-width: 575px) {
+  .promo {
+    background-size: auto !important;
+    background-position: center center !important; }
+    .promo .module-body {
+      height: 200px;
+      width: 65%; }
+      .promo .module-body .info {
+        padding: 20px 0 20px 20px;
+        min-height: 90px; }
+        .promo .module-body .info h3 {
+          font-size: 1.500em;
+          line-height: 1.097em;
+          margin: 0 0 8px; }
+        .promo .module-body .info p {
+          width: 100%;
+          font-size: 0.875em; }
+        .promo .module-body .info .product-cta {
+          bottom: 20px;
+          font-size: 0.875em;
+          line-height: 1.250em; }
+    .promo.light-block .module-body {
+      background: url("//static.preview1s.o2.co.uk/shared/img/modules/module-bg-white-box.png") repeat scroll 0 0 transparent; }
+    .promo.tall .module-body {
+      height: 250px; }
+      .promo.tall .module-body .info {
+        padding: 30px 0 30px 20px; }
+        .promo.tall .module-body .info .product-cta {
+          padding: 0 0 5px 27px;
+          font-size: 1.313em;
+          background-position: 0 -58px;
+          font-family: Frutiger45Light, sans-serif;
+          font-weight: 100; }
+    .promo.tall.light-block .module-body {
+      background-image: url("//static.preview1s.o2.co.uk/shared/img/modules/module-bg-white-box-tall-tablet.png");
+      width: 63%; }
+    .promo.tall.light .product-cta, .promo.tall.light-block .product-cta {
+      background-position: 0 2px !important; }
+    .promo.iphone {
+      background-size: cover !important;
+      background-position: center center !important; } }
+
+@media screen and (min-width: 815px) {
+  .promo {
+    background-size: auto !important;
+    background-position: center center !important; }
+    .promo .module-body {
+      width: 65%; }
+      .promo .module-body .info {
+        min-height: 140px;
+        padding: 30px 0 30px 30px; }
+        .promo .module-body .info h3 {
+          font-size: 1.75em; }
+        .promo .module-body .info p {
+          width: 75%;
+          font-size: 0.875em; }
+        .promo .module-body .info .product-cta {
+          font-size: 0.875em; }
+    .promo.tall .module-body {
+      height: 300px; }
+      .promo.tall .module-body .info {
+        padding: 40px 0 40px 30px; }
+        .promo.tall .module-body .info .product-cta {
+          padding: 0 0 5px 27px;
+          font-size: 1.563em;
+          background-position: 0 -55px;
+          font-family: Frutiger45Light, sans-serif;
+          font-weight: 100; }
+    .promo.tall.light .module-body, .promo.tall.light-block .module-body {
+      width: 65%; }
+      .promo.tall.light .module-body .info .product-cta, .promo.tall.light-block .module-body .info .product-cta {
+        background-position: 0 5px !important; }
+    .promo.tall.light-block .module-body {
+      background-image: url("//static.preview1s.o2.co.uk/shared/img/modules/module-bg-white-box-tall-desktop.png"); }
+    .promo.iphone {
+      background-size: auto !important;
+      background-position: center center !important; }
+  .col-3 .promo.light-block .module-body {
+    width: 65%; }
+    .col-3 .promo.light-block .module-body .info {
+      padding: 20px 0 20px 20px; } }
+
+#lp-mobile-chat-button, .lp-mobile-chat-button {
+  display: none;
+  background: none;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  color: #FFF; }
+
+.lp {
+  height: 150px; }
+
+@media screen and (min-width: 575px) {
+  .lp {
+    height: 200px;
+    display: inline; } }

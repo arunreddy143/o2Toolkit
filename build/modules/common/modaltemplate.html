@@ -1,27 +1,28 @@
 <div class="modal">
 	<div class="modal-dialog">
 		<div class="modal-content" >
+
 			<form name="moduleForm">
 				<div class="modal-header">
 					<h3 class="modal-title">{{module.name}}</h3>
 				</div>
 				<div class="modal-body">
-					<div class="form-row">
+					<div class="form-row" ng-show="module.titleBol">
 						<label>Title</label>
 						<textarea type="text" ng-model="module.title"></textarea>
 					</div>
-					<div class="form-row">
+					<div class="form-row" ng-show="module.copyBol">
 						<label>Copy</label>
 						<textarea type="text" value="${$scope.copy}}" ng-model="module.copy"></textarea>
 					</div>
-					<div class="form-row">
+					<div class="form-row" ng-show="module.ctaBol">
 						<label>CTA Link</label>
 						<textarea type="text" value="${$scope.cta}}" ng-model="module.cta"></textarea>
 					</div>
 					<div class="form-row">
 						<label>Extra Classes</label>
-						<select ng-model="extraClass"
-						ng-options="module.shade as module.shade for module in module.extraClass">
+						<select name="extraClass" ng-model="module.extraClass"
+						ng-options="module.shade as module.shade for module in module.extraClass track by module.shade.selected">
 						</select>
 					</div>
 					<div class="form-row">

@@ -40574,30 +40574,29 @@ var myApp=myApp.directive('promoSDirective', function($compile,ModalService) {
   return {
       restrict: 'AE',  
       replace: true,
-      scope:{moduledata:"@"},
+      scope:{moduledata:"@"},        
       templateUrl: "./modules/promo-s/template.html",
 		link: function ( $scope, element ) {  
 			$scope.module=JSON.parse($scope.moduledata);
-			$scope.currentIndex;
-			element.bind('click', function() {
-				
+			console.log($scope.module)
+			$scope.module.titleBol=true; 
+			$scope.module.copyBol=true;
+			$scope.module.ctaBol=true;
+			element.bind('click', function() {  				
 				//$scope.currentIndex=$('.module-section').index(this);
 				ModalService.showModal({
 		            templateUrl: './modules/common/modaltemplate.html',
 		            controller: "ModalController",
 		            data:$scope.module
+
 		        }).then(function(modal) {
 		            modal.element.show();
-		            modal.close.then(function(result) {
-
-
-		            	console.log(element.find('.bkg-img'))
+		            modal.close.then(function(result) {		            	
 		            	$scope.module=result;
 		            	responsiveImg();
 		                $scope.message = "You said " + result; 
 		            });
 		        });
-			
 
 	        });
 	        function responsiveImg() {	 

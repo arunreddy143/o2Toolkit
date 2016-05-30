@@ -1,3 +1,4 @@
+@import "dev/assets/scss/_libraries/common";
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
@@ -292,6 +293,7 @@ input::-webkit-calendar-picker-indicator {
 }
 .add-module {
     margin-left:20px;
+    margin-bottom:20px;
 }
 .nav-tabs {
     display: block;
@@ -345,7 +347,26 @@ input::-webkit-calendar-picker-indicator {
 .tab-content .tab-pane.active{
     display:block;
 }
+.default-content-container {
+    padding:20px 20px;
+    h2,h3 {
+        color: #032b5a;
+        @include font-size(24);
+        padding-bottom:20px;
+    }
+    p {
+       @include font-size(16); 
+       padding-bottom:20px;
+    }
+    ul,li {
+        list-style:disc;
+        margin-left:20px;
 
+    }
+    ul {
+        padding-bottom:20px;
+    }
+}
 @media screen and (min-width: 575px) {
     .nav-primary .nav-consumer {
         display: block;
@@ -360,6 +381,9 @@ input::-webkit-calendar-picker-indicator {
         padding-top:10px;
     }
     .default-txt-container {
+        padding-top:0;
+    }
+    .default-content-container {
         padding-top:0;
     }
 
