@@ -19,7 +19,8 @@ var gulp = require('gulp'),
     nodemon=require('gulp-nodemon')
     sourcemaps = require('gulp-sourcemaps')
     concatCss = require('gulp-concat-css')
-    stylish=require('jshint-stylish');
+    stylish=require('jshint-stylish'),
+    Server = require('karma').Server;
 // Clean
 gulp.task('clean', function() {
   return del(['build']);
@@ -83,6 +84,16 @@ gulp.task('server', function(){
         gulp.src('server.js')
     });
 
+});
+
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 gulp.task('watch', function() {

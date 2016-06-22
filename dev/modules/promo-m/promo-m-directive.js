@@ -1,4 +1,4 @@
-var myApp=myApp.directive('promoMDirective', function($compile,ModalService) {
+var myApp=myApp.directive('promoMDirective', function($compile,ModalService,$window) {
   return {
       restrict: 'AE',   
       replace: true,
@@ -28,20 +28,20 @@ var myApp=myApp.directive('promoMDirective', function($compile,ModalService) {
 	        $scope.ok=function(module,currentIndex) {	 
 	        	var bgApply=$('.module-section').eq($scope.currentIndex).find('.bkg-img');
 	        	var responsiveImg=function() {
-	        	if(angular.element(window).width()<575) {
+	        	if(angular.element($window).width()<575) {
 	        		$(bgApply).css( 'background-image',"url('" + module.mobile + "')"); 
 	        	}
-	        	if(angular.element(window).width()>=575 && angular.element(window).width()<=815) {
+	        	if(angular.element($window).width()>=575 && angular.element($window).width()<=815) {
 	        		$(bgApply).css( 'background-image',"url('" + module.tablet + "')");  
 	        	}
-	        	if(angular.element(window).width()>=815) {
+	        	if(angular.element($window).width()>=815) {
 	        		$(bgApply).css( 'background-image',"url('" + module.desktop + "')");
 	        	}
 	        	$scope.master = angular.copy($scope.module);
 	        };
         	responsiveImg();
         	removeModal(currentIndex);
-        	$(window).on("resize", function () {
+        	$($window).on("resize", function () {
 	        	responsiveImg();
 	        });     	
 	        	

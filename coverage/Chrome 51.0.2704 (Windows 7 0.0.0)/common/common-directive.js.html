@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for common\common-directive.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">common/</a> common-directive.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">12.5% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">12.5% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/24</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var myApp=myApp.directive('preCode', <span class="fstat-no" title="function not covered" >function($timeout){</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      restrict: 'AE',
+      replace: true,
+      scope:{name:"@"},
+      template:"&lt;pre class='preCode prettyprint'&gt;sadas&lt;/pre&gt;",
+      link:<span class="fstat-no" title="function not covered" >function($scope, element) {</span>
+<span class="cstat-no" title="statement not covered" >        $timeout(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        $('[data-behavior="sample_code"').each(<span class="fstat-no" title="function not covered" >function(){ </span></span>
+<span class="cstat-no" title="statement not covered" >          var container = $(this);</span>
+          
+          //var target = container.closest('.preCode'); 
+          //if we have a target
+          
+            // get the sample's html
+<span class="cstat-no" title="statement not covered" >            var sample_html = container.html();</span>
+<span class="cstat-no" title="statement not covered" >            var white_space = "☺";</span>
+            // find how many spaces are before the part of the html
+<span class="cstat-no" title="statement not covered" >            try {</span>
+<span class="cstat-no" title="statement not covered" >              white_space = sample_html.match(/\n+\s+\S/)[0].slice(0,(sample_html.match(/\n+\s+\S/)[0].length-3));</span>
+            } catch(err) {}
+            // set up a regex to search for a white space string
+<span class="cstat-no" title="statement not covered" >            var re = new RegExp(white_space,"g");</span>
+            // replace white_space, &lt; and &gt; with &amp;lt; and &amp;gt; and remove the sample_code ref
+<span class="cstat-no" title="statement not covered" >            sample_html = sample_html.replace(re,"\n").replace(/&lt;/g,"&amp;lt;").replace(/&gt;/g,"&amp;gt;").replace(' data-behavior="sample_code"','');</span>
+            // trim out any new lines at begining or end of string
+<span class="cstat-no" title="statement not covered" >            sample_html = $.trim(sample_html);</span>
+            // stick into target
+<span class="cstat-no" title="statement not covered" >             element.html("&lt;code&gt;"+sample_html+"&lt;/code&gt;");</span>
+          
+        });
+        });
+      }
+&nbsp;
+&nbsp;
+      }; 
+});
+&nbsp;
+myApp.directive("fileread", [<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        scope: {
+            fileread: "="
+        },
+        link: <span class="fstat-no" title="function not covered" >function (scope, element) {</span>
+<span class="cstat-no" title="statement not covered" >            element.bind("change", <span class="fstat-no" title="function not covered" >function (changeEvent) {  </span></span>
+<span class="cstat-no" title="statement not covered" >                var reader = new FileReader();</span>
+<span class="cstat-no" title="statement not covered" >                reader.onload = <span class="fstat-no" title="function not covered" >function (loadEvent) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    scope.$apply(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                        scope.fileread = loadEvent.target.result;</span>
+                    });
+                };
+<span class="cstat-no" title="statement not covered" >                reader.readAsDataURL(changeEvent.target.files[0]);</span>
+            });
+        }
+    };
+}]);
+&nbsp;
+&nbsp;
+//Directive for adding buttons on click that show an alert on click
+myApp.directive("addmodules", <span class="fstat-no" title="function not covered" >function(/*$compile*/){</span>
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >function(scope, element){</span></span>
+<span class="cstat-no" title="statement not covered" >    element.bind("click", <span class="fstat-no" title="function not covered" >function(){</span></span>
+      //angular.element(document.getElementById('section')).append($compile("&lt;promo-s-directive moduledata='{{moduleData}}' /&gt; ")(scope));
+    });
+  };
+});</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jun 12 2016 00:07:54 GMT+0100 (GMT Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

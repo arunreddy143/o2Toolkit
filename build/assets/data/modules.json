@@ -9,11 +9,11 @@
             "ctaUrl": "google.com",
             "extraClass": [
                 {
-                    "shade": "light",
-                    "selected": "true"
+                    "shade": "light"
                 },
                 {
-                    "shade": "dark"
+                    "shade": "dark",
+                     "selected": true
                 }
             ],
             "bp1": "",

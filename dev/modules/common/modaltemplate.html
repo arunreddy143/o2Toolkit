@@ -1,7 +1,6 @@
 <div class="modal">
 	<div class="modal-dialog">
 		<div class="modal-content" >
-
 			<form name="moduleForm">
 				<div class="modal-header">
 					<h3 class="modal-title">{{module.name}}</h3>
@@ -21,8 +20,8 @@
 					</div>
 					<div class="form-row">
 						<label>Extra Classes</label>
-						<select name="extraClass" ng-model="module.extraClass"
-						ng-options="module.shade as module.shade for module in module.extraClass track by module.shade.selected">
+						<select name="shadeClass" ng-model="module.shadeClass"
+						ng-options="module.shade as module.shade for module in module.extraClass track by module.shade">
 						</select>
 					</div>
 					<div class="form-row">
@@ -39,8 +38,8 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-primary btn-primary" type="button" ng-click="close(module)" data-dismiss="modal">OK</button>
-					<button class="btn btn-warning" type="button" ng-click="close('No')" data-dismiss="modal">Cancel</button>
+					<button class="btn btn-primary btn-primary" type="button" ng-click="close('yes')" data-dismiss="modal">OK</button>
+					<button class="btn btn-warning" type="button" ng-click="close('no')" data-dismiss="modal">Cancel</button>
 				</div>
 			</form>
 		</div>
