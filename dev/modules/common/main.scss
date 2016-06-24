@@ -197,6 +197,8 @@ pre {
     border: 1px solid #ccc;
     border-radius: 4px;
     margin:20px;
+    height:300px;
+    overflow-y:auto;
 }
 input::-webkit-calendar-picker-indicator {
   display: none;

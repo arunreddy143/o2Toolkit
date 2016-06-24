@@ -101,7 +101,17 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', function() {  
-  runSequence('clean', ['sass' ,'lint','copyFiles','server','watch']);  
+  runSequence('clean', ['sass' ,'lint','copyFiles','watch'],function() {
+        console.log('Run something else');
+         nodemon({
+        // the script to run the app
+        script: 'server.js',
+        ext: 'js'
+    }).on('restart', function(){ 
+        // when the app has restarted, run livereload.
+        gulp.src(['server.js','watch'])
+    });
+    }); 
 });
 
 gulp.task('prod', function() {
