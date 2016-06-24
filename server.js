@@ -26,12 +26,12 @@ app.use(express.static(path.join(__dirname, './build')));
 
 
 
-fs.readFile(__dirname +'/build/assets/css/promo-s/promo-s.css', "utf8", function(err, data){
+/*fs.readFile(__dirname +'/build/assets/css/promo-s/promo-s.css', "utf8", function(err, data){
   if ( err ){ throw err;}
   console.log("Reading file asynchronously");
   //console.log(data);
-  writeSourcePath(data)
-});
+  //writeSourcePath(data)
+});*/
 
 function writeSourcePath(data) {
 var writeSource = __dirname+'/build/assets/css/test/promo-s.html';
