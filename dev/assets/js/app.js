@@ -1,28 +1,53 @@
-var myApp=angular.module('myApp', ['ui.router','ngSanitize','ui.bootstrap','angularModalService']);
+var myApp=angular.module('myApp', ['ui.router','ngSanitize','ui.bootstrap','angularModalService','Routing']);
 
-myApp.config(function($stateProvider, $urlRouterProvider) {          
-     
-    
+myApp.config(function($stateProvider, $urlRouterProvider, routerProvider) {         
+ 
     $stateProvider                   
         
         // HOME STATES AND NESTED VIEWS ========================================
-        .state('promoM', {
-            url: '/promoM',
-            templateUrl: 'modules/promo-m/index.html'
-        })
-        
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('promoS', {
-             url: '/promoS',
-            templateUrl: 'modules/promo-s/index.html'     
-        })
         .state('/', {
             url: '/',
             templateUrl: 'modules/aboutToolkit/index.html'
         });
 
         $urlRouterProvider.otherwise("/");
+        routerProvider.setCollectionUrl('assets/data/modules.json');
         
+});
+
+myApp.controller('MainController', function ($scope, router) {
+        $scope.reload = function() {
+            router.setUpRoutes();
+        };
+});
+
+angular.module('Routing', ['ui.router'])
+    .provider('router', function ($stateProvider) {
+ 
+        var urlCollection;
+ 
+        this.$get = function ($http, $state) {
+            return {
+                setUpRoutes: function () {
+                    $http.get(urlCollection).success(function (collection) {
+                      var wrapper = collection.modules;
+                      for(var  i =0;i < wrapper.length;i++){
+                              if (!$state.get(wrapper[i].routeObj.name)) {
+                                $stateProvider.state(wrapper[i].routeObj.name, wrapper[i].routeObj.detail);
+                            }
+                      }
+                    });
+                }
+            }
+        };
+ 
+        this.setCollectionUrl = function (url) {
+            urlCollection = url;
+        }
+    })
+ 
+    .run(function (router) {
+        router.setUpRoutes();
 });
 
 myApp.service('modulesService', function($http){

@@ -2,7 +2,13 @@
     "modules": [
         {
             "name": "Promo S",
-            "url": "promoS/index.html",
+            "routeObj":{
+                "name": "promoS",
+                "detail" : {
+                        "url": "/promoS",
+                        "templateUrl": "modules/promo-s/index.html"
+                }
+            },
             "title": "Lorem ipsum",
             "copy": "This is copy",
             "cta": "This is  CTA link",
@@ -27,7 +33,13 @@
         },
         {
             "name": "Promo M",
-            "url": "promoM/index.html",
+            "routeObj":{
+            "name":"promoM",
+            "detail": {
+                "url": "/promoM",
+                "templateUrl": "modules/promo-m/index.html"
+                }
+            },
             "title": "Lorem ipsum",
             "copy": "This is copy for Promo M",
             "cta": "This is  CTA link",
