@@ -34,7 +34,7 @@ function readWriteDynamicFile(readWriteDynamicFile,writeFilename) {
   });
 
   function writeSourcePath(data,writeFilename) {
-   var writeSource= writeFilename.replace(/\\/g,"/").replace('.scss', '-css.html') 
+   var writeSource= writeFilename.replace(/\\/g,"/").replace('.scss', '-css.html')
   //var writeSource = __dirname+'/dev/modules/promo-s/css.html';
 
   fs.writeFile(writeSource, data, {"encoding":'utf8'}, function(err){
@@ -52,7 +52,7 @@ function readWriteDynamicFile(readWriteDynamicFile,writeFilename) {
 
 }
 
-var skipDirectives=['common','aboutToolkit','promo-m'];  
+var skipDirectives=['common','aboutToolkit','promo-m'];
 function fromDir(startPath,filter){
 
     //console.log('Starting from dir '+startPath+'/');
@@ -63,33 +63,32 @@ function fromDir(startPath,filter){
     }
 
     var files=fs.readdirSync(startPath);
-    console.log(startPath)
+    
     for(var i=0;i<files.length;i++){
         var filename=path.join(startPath,files[i]);
         var stat = fs.lstatSync(filename);
 
-
-
+        
+        //console.log("file length"+filename)
         if (stat.isDirectory()){
 
             fromDir(filename,filter); //recurse
         }
-        else if (filename.indexOf(filter)>=0) { 
+        else if (filename.indexOf(filter)>=0) {
             //console.log('-- found: ',filename);
+             console.log("file length")
             for(var i=0; i<skipDirectives.length; i++) {
-              //console.log(new RegExp(skipDirectives[i]).test(filename))
-                /*if(new RegExp(skipDirectives[i]).test(filename)) {
-
-                  return true
-                }*/
-                //else {
-                   readFileName=(filename.replace(/\\/g,"/").replace('.scss', '.css')).replace('dev/modules', "build/assets/css");
-
-                    readWriteDynamicFile(readFileName,filename)
-               // }
+              
+                if(!new RegExp(skipDirectives[i]).test(path.dirname(filename))) {
+                  //console.log("names"+startPath)
+                  //console.log(new RegExp(skipDirectives[i]).test(filename))
+                  return true; 
+                }
+                readFileName=(filename.replace(/\\/g,"/").replace('.scss', '.css')).replace('dev/modules', "build/assets/css");
+                readWriteDynamicFile(readFileName,filename)
             }
            
-           /* console.log("old"+filename)
+            /*console.log("old"+filename)
             console.log("new"+readFileName)*/
         };
     };
