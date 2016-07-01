@@ -85,7 +85,6 @@ myApp.directive('fullSpec', function(){
 
 
 myApp.controller('formSearchController',function($scope,$state,modulesService){
-
  $scope.selectedModule = "";
   $scope.moduleData = [];
   $scope.modulesName = [];
@@ -93,20 +92,22 @@ myApp.controller('formSearchController',function($scope,$state,modulesService){
         $scope.moduleData=httpData.data.modules;
         for(var i=0;i<$scope.moduleData.length;i++){
          $scope.modulesName.push($scope.moduleData[i].name);
-      }       
+      }
+      availableTags = $scope.modulesName;       
   });
 
   $scope.clicker = function(){
     var found = $.inArray($scope.selectedModule, $scope.modulesName) > -1;
-    var val = $scope.selectedModule.split(" ");
-    var url = val[0].toLowerCase();
-    var finalurl = url.concat(val[1]); 
-    if(found){
-      $state.go(finalurl);
-    }
-  };
-
+      var val = $scope.selectedModule.split(" ");
+      var url = val[0].toLowerCase();
+      var finalurl = url.concat(val[1]); 
+      if(found){
+        $state.go(finalurl);
+        }
+  }
 });
+
+
 
 myApp.directive('formSearch', function(){
     return {
@@ -114,8 +115,7 @@ myApp.directive('formSearch', function(){
       replace: true,
       controller: 'formSearchController',
       scope:{name:"@"},
-      template:'<form autocomplete="off" action="" method="GET"><label for"search"="">Search for modules</label><div class="fieldandsubmitbar"><input type="text" list="modules" ng-model="selectedModule" ng-change="clicker()" name="query" placeholder="Keywords"> <input type="submit" value="" ><datalist id="modules"> <option ng-repeat="modules in modulesName">{{modules}}</option></datalist></div> </form>'
-
+      template:'<form id="MainWrap" autocomplete="off" action="" method="GET"><label for"search"="">Search for modules</label><div class="fieldandsubmitbar"><input type="text" ng-model="selectedModule" id="tags" name="query" placeholder="Keywords" ng-blur="clicker()"> <input type="submit" value=""></div> </form>'
       };  
 });
 
@@ -185,4 +185,19 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+$(function() {
+    $( "#tags" ).autocomplete({
+      source: function(request, response){
+        var scope = angular.element(document.getElementById("tags")).scope();
+        response(scope.modulesName);
+      },
+      select: function (event, ui) {
+      var scope = angular.element(document.getElementById("tags")).scope();
+      scope.selectedModule = ui.item.value;
+      scope.$apply;
+      scope.clicker();
+      }
+    });
+});
 
