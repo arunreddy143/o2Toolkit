@@ -6,6 +6,7 @@ var express = require('express');
 var logger = require('morgan');
 var fs = require("fs");
 var app = express(); 
+var unique = require('array-unique');
 
 app.set('port', process.env.PORT || 3000);
 app.use(cors());
@@ -28,7 +29,7 @@ function readWriteDynamicFile(readWriteDynamicFile,writeFilename) {
 
   fs.readFile(readWriteDynamicFile, "utf8", function(err, data){
     if ( err ){ throw err;}
-    console.log("Reading file asynchronously");
+    //console.log("Reading file asynchronously");
     //console.log(data);
     writeSourcePath("<pre>"+data+"</pre>",writeFilename)
   });
@@ -39,11 +40,11 @@ function readWriteDynamicFile(readWriteDynamicFile,writeFilename) {
 
   fs.writeFile(writeSource, data, {"encoding":'utf8'}, function(err){
     if ( err ) { throw err; }
-    console.log("*** File written successfully");
+    //console.log("*** File written successfully");
     //Now reading the same file to confirm data written
     fs.readFile(writeSource, "utf8", function(err, data){
       if ( err ){ throw err;}
-      console.log("*** Reading just written file");
+      //console.log("*** Reading just written file");
       //console.log(data);
     });
 
@@ -52,15 +53,19 @@ function readWriteDynamicFile(readWriteDynamicFile,writeFilename) {
 
 }
 
-var skipDirectives=['common','aboutToolkit','promo-m'];
+var skipDirectives=['common','aboutToolkit'];
+var currentDir = [];
 function fromDir(startPath,filter){
 
-    //console.log('Starting from dir '+startPath+'/');
+    //console.log('Starting from dir '+startPath+'/');          
+
 
     if (!fs.existsSync(startPath)){
         console.log("no dir ",startPath);
         return;
     }
+    
+      //console.log(currentDir)
 
     var files=fs.readdirSync(startPath);
     
@@ -71,31 +76,32 @@ function fromDir(startPath,filter){
         
         //console.log("file length"+filename)
         if (stat.isDirectory()){
+            // console.log(uniqueNames.length)
+            
 
             fromDir(filename,filter); //recurse
         }
         else if (filename.indexOf(filter)>=0) {
             //console.log('-- found: ',filename);
-             console.log("file length")
-            for(var i=0; i<skipDirectives.length; i++) {
-              
-                if(!new RegExp(skipDirectives[i]).test(path.dirname(filename))) {
-                  //console.log("names"+startPath)
-                  //console.log(new RegExp(skipDirectives[i]).test(filename))
-                  return true; 
-                }
-                readFileName=(filename.replace(/\\/g,"/").replace('.scss', '.css')).replace('dev/modules', "build/assets/css");
-                readWriteDynamicFile(readFileName,filename)
-            }
+           //currentDir.push(startPath)
+          
+            readFileName=(filename.replace(/\\/g,"/").replace('.scss', '.css')).replace('dev/modules', "build/assets/css");
+            readWriteDynamicFile(readFileName,filename)
            
-            /*console.log("old"+filename)
-            console.log("new"+readFileName)*/
+           // console.log("old"+filename)
+           /* console.log("new"+readFileName)*/
+
+           //currentDir.push(startPath.replace(/\\/g,"/"))
+
+            
+    
+          
         };
     };
 };
 fromDir( __dirname+'/dev/modules/','.scss');
 
-
+ 
 
 /*
  |--------------------------------------------------------------------------

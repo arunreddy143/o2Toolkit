@@ -109,7 +109,7 @@ gulp.task('default', function() {
         ext: 'js'
     }).on('restart', function(){ 
         // when the app has restarted, run livereload.
-        gulp.src(['server.js','watch'])
+        gulp.src(['server.js','copyFiles','watch'])
     });
     }); 
 });
