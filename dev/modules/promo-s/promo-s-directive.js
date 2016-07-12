@@ -1,15 +1,23 @@
-var myApp=myApp.directive('promoSDirective', function($compile,ModalService,$window) {
+var myApp=myApp.directive('promoSDirective', function($rootScope,$compile,ModalService,$window,modulesService) {
   return {
       restrict: 'AE',  
       replace: true,      
-      scope:{moduledata:"@"},                 
+      scope:{name:"@"},                 
       templateUrl: "./modules/promo-s/template.html",
 		link: function ( $scope, element ) {  
-			$scope.module=JSON.parse($scope.moduledata);			
+			var source = angular.copy($rootScope.moduledata);
+			function moduleJson() {
+			  for (var i = 0; i < source.length; i++) {
+			    	if (source[i].name === $scope.name) {
+				      return source[i];
+				    }
+			  }
+			}
+			$scope.module=moduleJson();			
 			$scope.module.titleBol=true; 
 			$scope.module.copyBol=true;
 			$scope.module.ctaBol=true;  
-			$scope.module.shadeClass=$scope.module.extraClass[0].shade;   
+			$scope.module.shadeClass=$scope.module.extraClass[0].shade; 
 			
 			element.bind('click', function() {  
 				ModalService.showModal({

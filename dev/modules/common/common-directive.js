@@ -57,10 +57,20 @@ myApp.directive("fileread", [function () {
 
 
 //Directive for adding buttons on click that show an alert on click
-myApp.directive("addmodules", function(/*$compile*/){
-  return function(scope, element){
-    element.bind("click", function(){
-      //angular.element(document.getElementById('section')).append($compile("<promo-s-directive moduledata='{{moduleData}}' /> ")(scope));
-    });
+myApp.directive("addmodules", function($compile){
+   
+  return {
+    restrict: 'EA',
+   scope: {
+    
+    name: '@' ,
+    moduledata:"@"        },
+    link: function (scope, element, attrs) { 
+      element.bind("click", function(){
+          
+        angular.element('.section-wrap').append($compile("<"+scope.name+" name='Promo S' /> ")(scope));
+      });
+    } //DOM manipulation
+    
   };
 });

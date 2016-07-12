@@ -21,6 +21,13 @@ myApp.controller('MainController', function ($scope, router) {
         };
 });
 
+myApp.run(function($rootScope,modulesService) {
+   modulesService.moduleData().then(function(httpData) {
+       $rootScope.moduledata=httpData.data.modules;
+        
+    });
+})
+
 angular.module('Routing', ['ui.router'])
     .provider('router', function ($stateProvider) {
  

@@ -68,7 +68,8 @@ function fromDir(startPath,filter){
       //console.log(currentDir)
 
     var files=fs.readdirSync(startPath);
-    
+
+
     for(var i=0;i<files.length;i++){
         var filename=path.join(startPath,files[i]);
         var stat = fs.lstatSync(filename);
@@ -78,13 +79,15 @@ function fromDir(startPath,filter){
         if (stat.isDirectory()){
             // console.log(uniqueNames.length)
             
-
+            // console.log(stat.isDirectory())
             fromDir(filename,filter); //recurse
+
         }
         else if (filename.indexOf(filter)>=0) {
             //console.log('-- found: ',filename);
            //currentDir.push(startPath)
           
+
             readFileName=(filename.replace(/\\/g,"/").replace('.scss', '.css')).replace('dev/modules', "build/assets/css");
             readWriteDynamicFile(readFileName,filename)
            

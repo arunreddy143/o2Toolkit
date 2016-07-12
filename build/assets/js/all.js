@@ -45327,6 +45327,13 @@ myApp.controller('MainController', function ($scope, router) {
         };
 });
 
+myApp.run(function($rootScope,modulesService) {
+   modulesService.moduleData().then(function(httpData) {
+       $rootScope.moduledata=httpData.data.modules;
+        
+    });
+})
+
 angular.module('Routing', ['ui.router'])
     .provider('router', function ($stateProvider) {
  
@@ -45568,84 +45575,23 @@ myApp.directive("fileread", [function () {
 
 
 //Directive for adding buttons on click that show an alert on click
-myApp.directive("addmodules", function(/*$compile*/){
-  return function(scope, element){
-    element.bind("click", function(){
-      //angular.element(document.getElementById('section')).append($compile("<promo-s-directive moduledata='{{moduleData}}' /> ")(scope));
-    });
+myApp.directive("addmodules", function($compile){
+   
+  return {
+    restrict: 'EA',
+   scope: {
+    
+    name: '@' ,
+    moduledata:"@"        },
+    link: function (scope, element, attrs) { 
+      element.bind("click", function(){
+          
+        angular.element('.section-wrap').append($compile("<"+scope.name+" name='Promo S' /> ")(scope));
+      });
+    } //DOM manipulation
+    
   };
 });
-var myApp=myApp.directive('promoSDirective', function($compile,ModalService,$window) {
-  return {
-      restrict: 'AE',  
-      replace: true,      
-      scope:{moduledata:"@"},                 
-      templateUrl: "./modules/promo-s/template.html",
-		link: function ( $scope, element ) {  
-			$scope.module=JSON.parse($scope.moduledata);			
-			$scope.module.titleBol=true; 
-			$scope.module.copyBol=true;
-			$scope.module.ctaBol=true;  
-			$scope.module.shadeClass=$scope.module.extraClass[0].shade;   
-			
-			element.bind('click', function() {  
-				ModalService.showModal({
-		            templateUrl: './modules/common/modaltemplate.html',
-		            controller: "ModalController",
-		            data:$scope.module
-
-		        }).then(function(modal) {
-		        	$scope.resetData = angular.copy($scope.module);
-		            modal.element.show();
-		            modal.close.then(function(result) {	
-		            	if(result==='no') {
-		            		$scope.module=$scope.resetData;
-		            		return;
-		            	}	            	
-		            	responsiveImg();    		            	    
-		            });
-		        });
-
-	        });
-	        function responsiveImg() {	 
-	        	var bgApply=element.find('.bkg-img');
-	        	var responsiveImg=function() {
-	        	if(angular.element($window).width()<575) {
-	        		$(bgApply).css( 'background-image',"url('" + $scope.module.dd + "')"); 
-	        	}
-	        	if(angular.element($window).width()>=575 && angular.element($window).width()<=815) {
-	        		$(bgApply).css( 'background-image',"url('" + $scope.module.bp2 + "')");  
-	        	}
-	        	if(angular.element($window).width()>=815) {
-	        		$(bgApply).css( 'background-image',"url('" + $scope.module.bp3 + "')");
-	        	}
-	        };
-        	responsiveImg();
-        	$($window).on("resize", function () {
-	        	responsiveImg();
-	        });     	
-	        	
-	        	
-	        }
-	        
-		}
-  	};
-}); 
-
-myApp.controller('ModalController', function($scope, close,options) {
-	$scope.module=options.data; 
- $scope.close = function(result) {
- 	//$scope.module=result;
- 	close(result, 500); // close, but give 500ms for bootstrap to animate
- };
-
- 
-
-});
-
-
-
-
 
 var myApp=myApp.directive('promoMDirective', function($compile,ModalService,$window) {
   return {
@@ -45707,6 +45653,86 @@ myApp.controller('ModalController', function($scope, close,options) {
  	$scope.module=result;
  	close(result, 500); // close, but give 500ms for bootstrap to animate
  };
+
+});
+
+
+
+
+
+var myApp=myApp.directive('promoSDirective', function($rootScope,$compile,ModalService,$window,modulesService) {
+  return {
+      restrict: 'AE',  
+      replace: true,      
+      scope:{name:"@"},                 
+      templateUrl: "./modules/promo-s/template.html",
+		link: function ( $scope, element ) {  
+			var source = angular.copy($rootScope.moduledata);
+			function moduleJson() {
+			  for (var i = 0; i < source.length; i++) {
+			    	if (source[i].name === $scope.name) {
+				      return source[i];
+				    }
+			  }
+			}
+			$scope.module=moduleJson();			
+			$scope.module.titleBol=true; 
+			$scope.module.copyBol=true;
+			$scope.module.ctaBol=true;  
+			$scope.module.shadeClass=$scope.module.extraClass[0].shade; 
+			
+			element.bind('click', function() {  
+				ModalService.showModal({
+		            templateUrl: './modules/common/modaltemplate.html',
+		            controller: "ModalController",
+		            data:$scope.module
+
+		        }).then(function(modal) {
+		        	$scope.resetData = angular.copy($scope.module);
+		            modal.element.show();
+		            modal.close.then(function(result) {	
+		            	if(result==='no') {
+		            		$scope.module=$scope.resetData;
+		            		return;
+		            	}	            	
+		            	responsiveImg();    		            	    
+		            });
+		        });
+
+	        });
+	        function responsiveImg() {	 
+	        	var bgApply=element.find('.bkg-img');
+	        	var responsiveImg=function() {
+	        	if(angular.element($window).width()<575) {
+	        		$(bgApply).css( 'background-image',"url('" + $scope.module.dd + "')"); 
+	        	}
+	        	if(angular.element($window).width()>=575 && angular.element($window).width()<=815) {
+	        		$(bgApply).css( 'background-image',"url('" + $scope.module.bp2 + "')");  
+	        	}
+	        	if(angular.element($window).width()>=815) {
+	        		$(bgApply).css( 'background-image',"url('" + $scope.module.bp3 + "')");
+	        	}
+	        };
+        	responsiveImg();
+        	$($window).on("resize", function () {
+	        	responsiveImg();
+	        });     	
+	        	
+	        	
+	        }
+	        
+		}
+  	};
+}); 
+
+myApp.controller('ModalController', function($scope, close,options) {
+	$scope.module=options.data; 
+ $scope.close = function(result) {
+ 	//$scope.module=result;
+ 	close(result, 500); // close, but give 500ms for bootstrap to animate
+ };
+
+ 
 
 });
 
