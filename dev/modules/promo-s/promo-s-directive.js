@@ -2,7 +2,7 @@ var myApp=myApp.directive('promoSDirective', function($rootScope,$compile,ModalS
   return {
       restrict: 'AE',  
       replace: true,      
-      scope:{name:"@"},                 
+      scope:{name:"@"},                    
       templateUrl: "./modules/promo-s/template.html",
 		link: function ( $scope, element ) {  
 			var source = angular.copy($rootScope.moduledata);

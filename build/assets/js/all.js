@@ -45582,67 +45582,77 @@ myApp.directive("addmodules", function($compile){
    scope: {
     
     name: '@' ,
-    moduledata:"@"        },
+    module:"@"        },
     link: function (scope, element, attrs) { 
       element.bind("click", function(){
           
-        angular.element('.section-wrap').append($compile("<"+scope.name+" name='Promo S' /> ")(scope));
+        angular.element('.section-wrap').append($compile("<"+scope.name+" name='"+scope.module+"' /> ")(scope));
       });
     } //DOM manipulation
     
   };
 });
 
-var myApp=myApp.directive('promoMDirective', function($compile,ModalService,$window) {
+var myApp=myApp.directive('promoMDirective', function($rootScope,$compile,ModalService,$window) {
   return {
       restrict: 'AE',   
       replace: true,
-      scope:{moduledata:"@"},
+      scope:{name:"@"},
       templateUrl: "./modules/promo-m/template.html",
 		link: function ( $scope, element ) {  
-			$scope.module=JSON.parse($scope.moduledata);
+			var source = angular.copy($rootScope.moduledata);
+			function moduleJson() {
+			  for (var i = 0; i < source.length; i++) {
+			    	if (source[i].name === $scope.name) {
+				      return source[i];
+				    }
+			  }
+			}
+			$scope.module=moduleJson();		
+			$scope.module.titleBol=true; 
+			$scope.module.copyBol=true;
+			$scope.module.ctaBol=true;  
+			$scope.module.shadeClass=$scope.module.extraClass[0].shade;
 			$scope.currentIndex;
-			element.bind('click', function() {
-				
-				//$scope.currentIndex=$('.module-section').index(this);
+			element.bind('click', function() {  
 				ModalService.showModal({
 		            templateUrl: './modules/common/modaltemplate.html',
 		            controller: "ModalController",
 		            data:$scope.module
-		        }).then(function(modal) {
-		            modal.element.show();
-		            modal.close.then(function(result) {
 
-		            	$scope.module=result;
-		                $scope.message = "You said " + result;
+		        }).then(function(modal) {
+		        	$scope.resetData = angular.copy($scope.module);
+		            modal.element.show();
+		            modal.close.then(function(result) {	
+		            	if(result==='no') {
+		            		$scope.module=$scope.resetData;
+		            		return;
+		            	}	            	
+		            	responsiveImg();    		            	    
 		            });
 		        });
-			
 
 	        });
-	        $scope.ok=function(module,currentIndex) {	 
-	        	var bgApply=$('.module-section').eq($scope.currentIndex).find('.bkg-img');
+	        function responsiveImg() {	 
+	        	var bgApply=element.find('.bkg-img');
 	        	var responsiveImg=function() {
 	        	if(angular.element($window).width()<575) {
-	        		$(bgApply).css( 'background-image',"url('" + module.mobile + "')"); 
+	        		$(bgApply).css( 'background-image',"url('" + $scope.module.dd + "')"); 
 	        	}
 	        	if(angular.element($window).width()>=575 && angular.element($window).width()<=815) {
-	        		$(bgApply).css( 'background-image',"url('" + module.tablet + "')");  
+	        		$(bgApply).css( 'background-image',"url('" + $scope.module.bp2 + "')");  
 	        	}
 	        	if(angular.element($window).width()>=815) {
-	        		$(bgApply).css( 'background-image',"url('" + module.desktop + "')");
+	        		$(bgApply).css( 'background-image',"url('" + $scope.module.bp3 + "')");
 	        	}
-	        	$scope.master = angular.copy($scope.module);
 	        };
         	responsiveImg();
-        	removeModal(currentIndex);
         	$($window).on("resize", function () {
 	        	responsiveImg();
 	        });     	
 	        	
 	        	
-	        };
-	        
+	        }
 		}
   	};
 }); 
@@ -45664,7 +45674,7 @@ var myApp=myApp.directive('promoSDirective', function($rootScope,$compile,ModalS
   return {
       restrict: 'AE',  
       replace: true,      
-      scope:{name:"@"},                 
+      scope:{name:"@"},                    
       templateUrl: "./modules/promo-s/template.html",
 		link: function ( $scope, element ) {  
 			var source = angular.copy($rootScope.moduledata);

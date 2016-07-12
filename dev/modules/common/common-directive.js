@@ -64,11 +64,11 @@ myApp.directive("addmodules", function($compile){
    scope: {
     
     name: '@' ,
-    moduledata:"@"        },
+    module:"@"        },
     link: function (scope, element, attrs) { 
       element.bind("click", function(){
           
-        angular.element('.section-wrap').append($compile("<"+scope.name+" name='Promo S' /> ")(scope));
+        angular.element('.section-wrap').append($compile("<"+scope.name+" name='"+scope.module+"' /> ")(scope));
       });
     } //DOM manipulation
     
