@@ -45737,7 +45737,7 @@ var myApp=myApp.directive('promoSDirective', function($rootScope,$compile,ModalS
 
 myApp.controller('ModalController', function($scope, close,options) {
 	$scope.module=options.data; 
- $scope.close = function(result) {
+ $scope.close = function(result) { 
  	//$scope.module=result;
  	close(result, 500); // close, but give 500ms for bootstrap to animate
  };
