@@ -6,3 +6,5 @@
 4) Unit testing --> Karma jasmine
 5) End-end testing --> Protractor jasmine
 
+
+
